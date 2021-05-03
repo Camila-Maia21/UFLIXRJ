@@ -1,26 +1,28 @@
-from app.cadastro_alunos.model import Alunos
+from app.cadastro_professores.model import Professores
 
-@app.route("/alunos")
+@app.route("/professores")
 def cadastro():
-    return render_template("cadastro_alunos.html")
+    return render_template("cadastro_professores.html")
 
-@app.route("/cadastroalunos", methods = ["POST", "GET"])
-def cadastroalunos():
+@app.route("/cadastroprofessores", methods = ["POST", "GET"])
+def cadastroprofessores():
     nome = ""
+    cpf = "" 
+    email = ""
     senha = ""
+    siape = ""
 
     if request.method  == "POST":
         nome = request.form["nome"]
         email = request.form["email"]
         cpf = request.form["cpf"]
         senha = request.form["senha"]
-        dre = request.form["dre"]
-        curso = request.form["curso"]
+        siape = request.form["siape"]
 
         if nome == "" or senha == "" or cpf == "":
             return "<h1>Todos os campos são obrigatórios</h1>"
         else:
-            pessoa = Alunos(nome, email, cpf, senha, dre, curso)
+            pessoa = Professores(nome,email,cpf,senha,siape)
             pessoa.salva()
             return "<h1>Registro salvo com sucesso</h1>"
 

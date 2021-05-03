@@ -1,6 +1,7 @@
 class Pessoas: 
-    def __init__(self, nome, cpf, senha):
+    def __init__(self, nome, email, cpf, senha):
         self.__nome = nome
+        self.__email = email
         self.__cpf = cpf
         self.__senha = senha
 
@@ -8,7 +9,13 @@ class Pessoas:
         registro = self.__user + " - " +self.__senha  + " \n"
         arquivo = open("registro_aluno.txt","a")
         arquivo.writelines(registro)
+
+    def setcpf(self,email):
+        self.__email = email
     
+    def getcpf(self):
+        return self.__email 
+
     def setcpf(self,cpf):
         self.__cpf = cpf
     
@@ -19,8 +26,8 @@ class Pessoas:
         return self.__senha
 
 class Alunos(Pessoas):
-    def __init__(self, nome, cpf, dre,curso):
-        super().__init__(nome,cpf)
+    def __init__(self, nome, email, cpf, senha, dre, curso):
+        super().__init__(nome,email,cpf,senha)
         self.__dre = dre
         self.__curso = curso
   
