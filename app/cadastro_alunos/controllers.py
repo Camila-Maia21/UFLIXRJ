@@ -1,7 +1,10 @@
 from app.cadastro_alunos.model import Alunos
+from flask import render_template, request, Flask
+
+app = Flask(__name__)
 
 @app.route("/alunos")
-def cadastro():
+def cadastroA():
     return render_template("cadastro_alunos.html")
 
 @app.route("/cadastroalunos", methods = ["POST", "GET"])
