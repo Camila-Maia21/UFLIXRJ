@@ -1,0 +1,4 @@
+class Config: 
+    SQLALCHEMY_DATABSE_URI = "///sqlite:"
+    SQALCHEMY_TRACK_MODIFICATIONS = 
+    JSON_SORT_KEYS = 

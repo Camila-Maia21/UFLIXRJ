@@ -1,6 +1,8 @@
 from app.cadastro_professores.model import Professores
 from flask import render_template, request  
+from flask import Blueprint 
 
+professores_api = Blueprint('professores_api', __name__)
 @app.route("/professores")
 def cadastroP():
     return render_template("cadastro_professores.html")
