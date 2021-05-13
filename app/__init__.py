@@ -1,9 +1,8 @@
 from flask import Flask 
+from app.extensions import db, migrate
 
-from app.cadastro_alunos.model import Alunos
-from app.cadastro_professores.model import Professores
-from app.cadastro_alunos.controllers import alunos_api
-from app.cadastro_professores.controllers import professores_api
+from app.cadastro_alunos.routes import aluno_api
+from app.cadastro_professores.routes import professor_api
 
 
 def create_app():
@@ -12,8 +11,8 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     
-    app.register_blueprint(professores_api)
-    app.register_blueprint(alunos_api)
+    app.register_blueprint(professor_api)
+    app.register_blueprint(aluno_api)
 
 
     return app

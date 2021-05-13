@@ -1,44 +1,12 @@
-class Pessoas: 
-    def __init__(self, nome, email, cpf, senha):
-        self.__nome = nome
-        self.__email = email
-        self.__cpf = cpf
-        self.__senha = senha
+from app.model import BaseModel
+from app.extensions import db
 
-    def salva(self  ):
-        registro = self.__user + " - " +self.__senha  + " \n"
-        arquivo = open("registro_aluno.txt","a")
-        arquivo.writelines(registro)
-
-    def setcpf(self,email):
-        self.__email = email
-    
-    def getcpf(self):
-        return self.__email 
-
-    def setcpf(self,cpf):
-        self.__cpf = cpf
-    
-    def getcpf(self):
-        return self.__cpf
-
-    def getsenha(self):
-        return self.__senha
-
-class Alunos(Pessoas):
-    def __init__(self, nome, email, cpf, senha, dre, curso):
-        super().__init__(nome,email,cpf,senha)
-        self.__dre = dre
-        self.__curso = curso
-  
-    def getdre(self):
-        return self.__dre
-  
-    def setdre(self,dre):
-        self.__dre = dre
-  
-    def getcurso(self):
-        return self.__curso
-  
-    def setcurso(self,curso):
-        self.__curso = curso
+class Aluno(BaseModel): 
+    __tablename_ = 'aluno'
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=False, unique = True)
+    cpf = db.Column(db.String(50), nullable=False, unique = True)
+    dre = db.Column(db.String(50), nullable=False, unique = True)
+    curso = db.Column(db.String(50), nullable=False)
+    senha = db.Column(db.LargeBinary(280), nullable=False)

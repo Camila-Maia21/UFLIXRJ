@@ -1,30 +1,30 @@
-from app.cadastro_alunos.model import Alunos
-from flask import render_template, request
-from flask import Blueprint
+from app.cadastro_alunos.model import Aluno
+from app.extensions import db
+from flask import jsonify, request 
+from flask.views import MethodView
 
-alunos_api = Blueprint('alunos_api', __name__)
-@app.route("/alunos")
-def cadastroA():
-    return render_template("cadastro_alunos.html")
+class AlunoDetails(MethodView): #aluno
+    def get(self):
+        aluno = Aluno.query.all()
+        return jsonify(aluno.json() for aluno in aluno), 200
+        
+    
+    def post(self): 
+        data = request.json
 
-@app.route("/cadastroalunos", methods = ["POST", "GET"])
-def cadastroalunos():
-    nome = ""
-    senha = ""
+        nome = data.get('nome')
+        email = data.get('email')
+        cpf = data.get('cpf')
+        dre = data.get('dre')
+        curso = data.get('curso')
+        senha = data.get('senha')
 
-    if request.method  == "POST":
-        nome = request.form["nome"]
-        email = request.form["email"]
-        cpf = request.form["cpf"]
-        senha = request.form["senha"]
-        dre = request.form["dre"]
-        curso = request.form["curso"]
+        if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(dre, str) or not isinstance(curso, str):
+            return {"error" : "Algum tipo invalido"}, 400
 
-        if nome == "" or senha == "" or cpf == "":
-            return "<h1>Todos os campos são obrigatórios</h1>"
-        else:
-            pessoa = Alunos(nome, email, cpf, senha, dre, curso)
-            pessoa.salva()
-            return "<h1>Registro salvo com sucesso</h1>"
+        aluno = Aluno(nome=nome, email=email , cpf=cpf, dre=dre, curso=curso)
 
-app.run()
+        db.session.add(aluno)
+        db.session.commit()
+
+        return aluno.json(), 200
