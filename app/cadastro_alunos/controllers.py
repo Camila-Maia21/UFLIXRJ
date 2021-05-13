@@ -2,6 +2,7 @@ from app.cadastro_alunos.model import Aluno
 from app.extensions import db
 from flask import jsonify, request 
 from flask.views import MethodView
+import bcrypt 
 
 class AlunoDetails(MethodView): #aluno
     def get(self):
@@ -17,12 +18,14 @@ class AlunoDetails(MethodView): #aluno
         cpf = data.get('cpf')
         dre = data.get('dre')
         curso = data.get('curso')
-        senha = data.get('senha')
+        senha = data.get('curso')
 
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(dre, str) or not isinstance(curso, str):
             return {"error" : "Algum tipo invalido"}, 400
 
-        aluno = Aluno(nome=nome, email=email , cpf=cpf, dre=dre, curso=curso)
+        senha_hash = bcrypt.hashpw(senha.encode(), bcrypt.gensalt())
+
+        aluno = Aluno(nome=nome, email=email , cpf=cpf, dre=dre, curso=curso, senha=senha)
 
         db.session.add(aluno)
         db.session.commit()

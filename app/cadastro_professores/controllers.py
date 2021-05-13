@@ -2,6 +2,7 @@ from app.cadastro_professores.model import Professor
 from app.extensions import db
 from flask import jsonify, request 
 from flask.views import MethodView
+import bcrypt 
 
 class ProfessorDetails(MethodView): #professor
     def get(self):
@@ -20,7 +21,9 @@ class ProfessorDetails(MethodView): #professor
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(siape, str):
             return {"error" : "Algum tipo invalido"}, 400
 
-        professor = Professor(nome=nome, email=email , cpf=cpf, siape=siape)
+        senha_hash = bcrypt.hashpw(senha.encode(), bcrypt.gensalt())
+
+        professor = Professor(nome=nome, email=email , cpf=cpf, siape=siape, senha=senha)
 
         db.session.add(professor)
         db.session.commit()
