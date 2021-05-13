@@ -8,4 +8,12 @@ class Professor(BaseModel):
     email = db.Column(db.String(50), nullable=False, unique = True)
     cpf = db.Column(db.String(50), nullable=False, unique = True)
     siape = db.Column(db.String(50), nullable=False, unique = True)
-    senha = db.Column(db.LargeBinary(280), nullable=False)
+    senha_hash = db.Column(db.LargeBinary(280), nullable=False)
+
+    def json(self): 
+        return {
+            "nome": self.nome,
+            "email": self.email,
+            "cpf": self.cpf,
+            "siape": self.dre
+        }
