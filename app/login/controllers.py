@@ -3,6 +3,7 @@ from app.extensions import db
 from flask import jsonify, request 
 from flask.views import MethodView
 import bcrypt 
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 class LoginDetails(MethodView): #login
     def get(self):
@@ -28,3 +29,20 @@ class LoginDetails(MethodView): #login
         db.session.commit()
 
         return login.json(), 200
+
+class UsuarioLogin(MethodView): #usuariologin
+    def post(self): 
+        data = request.json
+
+        email = data.get('email')
+        senha = str(data.get('senha'))
+
+        login = Login.query.filter_by(email= email).first()
+
+        if not login or not bcrypt.checkpw(senha.encode(), login.senha_hash):
+            return{"error": "Usuario não encontrado"}, 400
+
+
+        token = create_access_token(identity=login.id)
+        
+        return {"token": token}, 200
