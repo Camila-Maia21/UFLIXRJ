@@ -16,14 +16,14 @@ class ProfessorDetails(MethodView): #professor
         email = data.get('email')
         cpf = data.get('cpf')
         siape = data.get('cpf')
-        senha = data.get('senha')
+        senha = str(data.get('senha'))
 
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(siape, str):
             return {"error" : "Algum tipo invalido"}, 400
 
         senha_hash = bcrypt.hashpw(senha.encode(), bcrypt.gensalt())
 
-        professor = Professor(nome=nome, email=email , cpf=cpf, siape=siape, senha=senha)
+        professor = Professor(nome=nome, email=email , cpf=cpf, siape=siape, senha_hash=senha_hash)
 
         db.session.add(professor)
         db.session.commit()

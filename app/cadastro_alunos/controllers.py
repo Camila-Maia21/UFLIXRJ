@@ -18,14 +18,14 @@ class AlunoDetails(MethodView): #aluno
         cpf = data.get('cpf')
         dre = data.get('dre')
         curso = data.get('curso')
-        senha = data.get('curso')
+        senha = str(data.get('senha'))
 
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(dre, str) or not isinstance(curso, str):
             return {"error" : "Algum tipo invalido"}, 400
 
         senha_hash = bcrypt.hashpw(senha.encode(), bcrypt.gensalt())
 
-        aluno = Aluno(nome=nome, email=email , cpf=cpf, dre=dre, curso=curso, senha=senha)
+        aluno = Aluno(nome=nome, email=email , cpf=cpf, dre=dre, curso=curso, senha_hash=senha_hash)
 
         db.session.add(aluno)
         db.session.commit()

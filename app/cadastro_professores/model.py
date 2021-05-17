@@ -15,5 +15,5 @@ class Professor(BaseModel):
             "nome": self.nome,
             "email": self.email,
             "cpf": self.cpf,
-            "siape": self.dre
+            "siape": self.siape
         }
