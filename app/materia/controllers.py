@@ -2,17 +2,13 @@ from app.materia.model import Materia
 from app.extensions import db
 from flask import jsonify, request 
 from flask.views import MethodView
-import bcrypt 
-from app.permissions import professor_jwt_required
 
 class MateriaCurrent(MethodView): #materia/current
     def get(self):
         materia = Materia.query.all()
-        return jsonify(materia.json() for materia in materia), 200
+        return jsonify([materia.json() for materia in materia]), 200
 
 class MateriaDetails(MethodView): #materia
-
-    decorators = [professor_jwt_required]
     
     def post(self): 
         data = request.json

@@ -7,7 +7,7 @@ import bcrypt
 class ProfessorDetails(MethodView): #professor
     def get(self):
         professor = Professor.query.all()
-        return jsonify(professor.json() for professor in professor), 200
+        return jsonify([professor.json() for professor in professor]), 200
     
     def post(self): 
         data = request.json

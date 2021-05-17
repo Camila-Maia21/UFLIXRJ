@@ -7,7 +7,7 @@ import bcrypt
 class AlunoDetails(MethodView): #aluno
     def get(self):
         aluno = Aluno.query.all()
-        return jsonify(aluno.json() for aluno in aluno), 200
+        return jsonify([aluno.json() for aluno in aluno]), 200
         
     
     def post(self): 
