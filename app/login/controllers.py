@@ -12,15 +12,15 @@ class UserLogin(MethodView):  #/login
         dados = request.json
 
         email = dados.get('email')
-        password = str(dados.get('password'))
+        senha = str(dados.get('senha'))
 
         aluno = Aluno.query.filter_by(email=email).first()
         professor = Professor.query.filter_by(email=email).first()
 
-        if not aluno or not bcrypt.checkpw(password.encode(), aluno.password_hash):
+        if not aluno or not bcrypt.checkpw(senha.encode(), aluno.senha_hash):
             return {'error': 'Usuário não encontrado'}, 400
 
-        if not professor or not bcrypt.checkpw(password.encode(), professor.password_hash):
+        if not professor or not bcrypt.checkpw(senha.encode(), professor.senha_hash):
             return {'error': 'Usuário não encontrado'}, 400
 
         token = create_access_token(identity=aluno.id)
