@@ -11,11 +11,11 @@ class UserLogin(MethodView):  #/login
     def post(self):
         dados = request.json
 
-        email = dados.get('email')
+        cpf = dados.get('cpf')
         senha = str(dados.get('senha'))
 
-        aluno = Aluno.query.filter_by(email=email).first()
-        professor = Professor.query.filter_by(email=email).first()
+        aluno = Aluno.query.filter_by(cpf=cpf).first()
+        professor = Professor.query.filter_by(cpf=cpf).first()
 
         if not aluno or not bcrypt.checkpw(senha.encode(), aluno.senha_hash):
             return {'error': 'Usuário não encontrado'}, 400
