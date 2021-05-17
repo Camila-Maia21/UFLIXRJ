@@ -10,6 +10,7 @@ flask-migrate = "*"
 bcrypt = "*"
 gunicorn = "*"
 psycopg2 = "*"
+flask-jwt-extended = "*"
 
 [dev-packages]
 
