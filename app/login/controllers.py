@@ -7,24 +7,27 @@ from flask.views import MethodView
 import bcrypt 
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
-
 class UserLogin(MethodView):  #/login
+    def post(self):
+        dados = request.json
 
-    def post(self): 
+        email = dados.get('email')
+        password = str(dados.get('password'))
 
-        dados = Login().load(request.json)
-        aluno = Aluno.query.filter_by(email=dados['email']).first()
-        professor = Professor.query.filter_by(email=dados['email']).first()
+        aluno = Aluno.query.filter_by(email=email).first()
+        professor = Professor.query.filter_by(email=email).first()
 
-        if not aluno or not aluno.verify_password(dados['password']):
-            return {'error': 'email ou password incorretos'}, 401
+        if not aluno or not bcrypt.checkpw(password.encode(), aluno.password_hash):
+            return {'error': 'Usuário não encontrado'}, 400
 
-        if not professor or not professor.verify_password(dados['password']):
-            return {'error': 'email ou password incorretos'}, 401
+        if not professor or not bcrypt.checkpw(password.encode(), professor.password_hash):
+            return {'error': 'Usuário não encontrado'}, 400
 
-        token = create_access_token(identity=aluno.id) 
+        token = create_access_token(identity=aluno.id)
+        token = create_access_token(identity=professor.id)
 
-        return {'token': token}, 200 
+        return {'token':token}, 200
+
 '''
 class LoginDetails(MethodView): #login
     def get(self):
