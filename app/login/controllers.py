@@ -2,10 +2,10 @@ from app.login.model import Login
 from app.cadastro_professores.model import Professor
 from app.cadastro_alunos.model import Aluno
 from app.extensions import db
-from flask import jsonify, request 
+from flask import request 
 from flask.views import MethodView
 import bcrypt 
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import create_access_token
 
 class UserLogin(MethodView):  #/login
     def post(self):
