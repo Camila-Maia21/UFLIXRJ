@@ -1,6 +1,7 @@
+from app.model import BaseModel
 from app.extensions import db 
 
-class Login(db.Model):
+class Login(BaseModel):
     __tablename__ = 'login'
     id = db.Column(db.Integer, primary_key = True)
     cpf = db.Column(db.String(50), nullable = False)

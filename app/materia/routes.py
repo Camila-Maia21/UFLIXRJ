@@ -10,3 +10,4 @@ materia_api.add_url_rule(
 materia_api.add_url_rule(
     '/materia', view_func = MateriaDetails.as_view('materia_details'), methods = ['POST']
 )
+#view_func -> responde as solicitações de seu aplicativo (requisições)

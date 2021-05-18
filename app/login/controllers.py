@@ -14,7 +14,7 @@ class UserLogin(MethodView):  #/login
         cpf = dados.get('cpf')
         senha = str(dados.get('senha'))
 
-        aluno = Aluno.query.filter_by(cpf=cpf).first()
+        aluno = Aluno.query.filter_by(cpf=cpf).first() #acessa o banco de dados e filtra o que você quer da classe
         professor = Professor.query.filter_by(cpf=cpf).first()
 
         if not aluno or not bcrypt.checkpw(senha.encode(), aluno.senha_hash):

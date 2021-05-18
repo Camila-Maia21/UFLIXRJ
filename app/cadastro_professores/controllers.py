@@ -6,8 +6,8 @@ import bcrypt
 
 class ProfessorDetails(MethodView): #professor
     def get(self):
-        professor = Professor.query.all()
-        return jsonify([professor.json() for professor in professor]), 200
+        professor = Professor.query.all() #Accessing the data in database
+        return jsonify([professor.json() for professor in professor]), 200 #Transforma o objeto em json 
     
     def post(self): 
         data = request.json
@@ -21,7 +21,7 @@ class ProfessorDetails(MethodView): #professor
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(siape, str):
             return {"error" : "Algum tipo invalido"}, 400
 
-        senha_hash = bcrypt.hashpw(senha.encode(), bcrypt.gensalt())
+        senha_hash = bcrypt.hashpw(senha.encode(), bcrypt.gensalt()) #criptografa senha e adiciona um "sal"
 
         professor = Professor(nome=nome, email=email , cpf=cpf, siape=siape, senha_hash=senha_hash)
 

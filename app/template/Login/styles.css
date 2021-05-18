@@ -1,0 +1,72 @@
+body{
+   background-image: url("../imagens/backgroundImage.webp");
+   background-size: cover;
+   }
+#main{
+    background-color:  rgba(245, 245, 245, 0.4);
+    width: 28%;
+    height: 80%;
+    margin-top: 3%;
+    margin-left: 3%;
+    text-align: center;
+    padding: 2%;
+    border-radius: 10%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+
+    }
+.button {
+    background-color:  rgba(227, 7, 17);
+    height: 8%;
+    width: 55%;
+    font-size: 92%;
+    border-radius: 5px;
+    border-width: 0;
+    font-weight: 700;
+    color:   rgb(102, 7, 13) ;
+
+
+}
+.button:hover {
+    background-color:  rgb(228, 53, 62);  
+
+}
+.main-image {
+    height: 10%;
+    width: 60%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.input {
+    background-color:  rgba(245, 245, 245, 0.7);
+    height: 5.8%;
+    width: 60%;
+    font-size: 92%;
+    border-radius: 5px;
+    border-width: 0;
+
+}
+.input:focus {
+   border-color: #27225A;
+   border-width: 2px;
+   outline: 0;
+
+}
+
+h4 {
+    margin-top: 10%
+}
+.text {
+    margin-top: 15%; 
+    margin-bottom: 5%;
+
+}
+label {
+    margin-left: -50%;
+     }
+
+#or{
+    margin-top: -1%;
+    margin-bottom: 3%;
+}

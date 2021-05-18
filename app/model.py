@@ -18,5 +18,5 @@ class BaseModel(db.Model):
             db.session.commit()
 
         except IntegrityError as err:
-            db.session.rollback()
-            abort(make_response(jsonify({'errors': str(err.orig)}), 400)) 
+            db.session.rollback()  #reverter o que foi feito (não salva)
+            abort(make_response(jsonify({'errors': str(err.orig)}), 400))  

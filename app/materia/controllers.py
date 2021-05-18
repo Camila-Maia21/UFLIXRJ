@@ -5,8 +5,8 @@ from flask.views import MethodView
 
 class MateriaCurrent(MethodView): #materia/current
     def get(self):
-        materia = Materia.query.all()
-        return jsonify([materia.json() for materia in materia]), 200
+        materia = Materia.query.all() #Accessing the data in database
+        return jsonify([materia.json() for materia in materia]), 200 #Transforma o objeto em json 
 
 class MateriaDetails(MethodView): #/materia
     
