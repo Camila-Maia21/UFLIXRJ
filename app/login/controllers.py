@@ -1,7 +1,6 @@
 from app.login.model import Login
 from app.cadastro_professores.model import Professor
 from app.cadastro_alunos.model import Aluno
-from app.extensions import db
 from flask import request 
 from flask.views import MethodView
 import bcrypt 
@@ -19,7 +18,7 @@ class UserLogin(MethodView):  #/login
         professor = Professor.query.filter_by(cpf=cpf).first()
 
         token = create_access_token(identity=aluno.id)
-        token = create_access_token(identity=professor.id)
+        token2 = create_access_token(identity=professor.id)
 
         return {'token':token}, 200
 '''
