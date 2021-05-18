@@ -24,7 +24,7 @@ class UserLogin(MethodView):  #/login
         token = create_access_token(identity=aluno.id)
         token = create_access_token(identity=professor.id)
         
-        u = Aluno(nome='susan', cpf='12345678910')
+        u = Aluno(cpf='12345678910', senha="kbfbfuwefwb")
         db.session.add(u)
 
         return {'token':token}, 200
