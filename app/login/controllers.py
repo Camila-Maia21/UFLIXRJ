@@ -5,6 +5,7 @@ from flask import request
 from flask.views import MethodView
 import bcrypt 
 from flask_jwt_extended import create_access_token
+from app.extensions import db 
 
 class UserLogin(MethodView):  #/login
     def post(self):
@@ -18,11 +19,13 @@ class UserLogin(MethodView):  #/login
         professor = Professor.query.filter_by(cpf=cpf).first()
 
         print(aluno.nome)
-        print (professor.nome)
+        print(professor.nome)
 
         token = create_access_token(identity=aluno.id)
         token = create_access_token(identity=professor.id)
-
+        
+        u = Aluno(nome='susan', cpf='12345678910')
+        db.session.add(u)
 
         return {'token':token}, 200
 
