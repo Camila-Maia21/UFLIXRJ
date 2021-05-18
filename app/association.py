@@ -6,5 +6,5 @@ association_table = db.Table('association', db.Model.metadata,
 
 
 association_table2 = db.Table('association2', db.Model.metadata,
-                            db.Column('aluno', db.Integer, db.ForeignKey('aluno.id')), 
+                            db.Column('aluno2', db.Integer, db.ForeignKey('aluno.id')), 
                             db.Column('professor', db.Integer, db.ForeignKey('professor.id')))
