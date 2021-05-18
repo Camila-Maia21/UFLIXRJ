@@ -19,7 +19,7 @@ class UserLogin(MethodView):  #/login
 
         print(aluno.nome)
 
-        if not aluno:
+        if aluno:
             return {'error': 'Usuário não encontrado'}, 400
 
         if not professor or not bcrypt.checkpw(senha.encode(), professor.senha_hash):
