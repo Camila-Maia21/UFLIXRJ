@@ -4,7 +4,7 @@ from flask import jsonify, request
 from flask.views import MethodView
 import bcrypt 
 
-class AlunoDetails(MethodView): #aluno
+class AlunoDetails(MethodView): #/aluno
     def get(self):
         aluno = Aluno.query.all()
         return jsonify([aluno.json() for aluno in aluno]), 200

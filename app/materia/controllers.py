@@ -8,7 +8,7 @@ class MateriaCurrent(MethodView): #materia/current
         materia = Materia.query.all()
         return jsonify([materia.json() for materia in materia]), 200
 
-class MateriaDetails(MethodView): #materia
+class MateriaDetails(MethodView): #/materia
     
     def post(self): 
         data = request.json
