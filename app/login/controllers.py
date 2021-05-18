@@ -18,7 +18,7 @@ class UserLogin(MethodView):  #/login
         professor = Professor.query.filter_by(cpf=cpf).first()
 
         token = create_access_token(identity=aluno.id)
-        token2 = create_access_token(identity=professor.id)
+        token = create_access_token(identity=professor.id)
 
         return {'token':token}, 200
 '''
