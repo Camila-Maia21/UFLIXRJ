@@ -13,7 +13,7 @@ class Aluno(BaseModel):
     senha_hash = db.Column(db.String(280), nullable=False)
 
     materia = db.relationship('Materia', secondary=association_table, backref='aluno')
-    professor = db.relationship('Professor', secondary=association_table2, backref='aluno')
+    professor = db.relationship('Professor', secondary=association_table2, backref='aluno2')
 
     def json(self): 
         return {
