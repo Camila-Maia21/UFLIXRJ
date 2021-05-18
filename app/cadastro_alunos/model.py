@@ -1,6 +1,5 @@
 from app.model import BaseModel
 from app.extensions import db
-from app.association import association_table, association_table2
 
 class Aluno(BaseModel): 
     __tablename_ = 'aluno'
@@ -11,9 +10,6 @@ class Aluno(BaseModel):
     dre = db.Column(db.String(50), nullable=False, unique = True)
     curso = db.Column(db.String(50), nullable=False)
     senha_hash = db.Column(db.String(280), nullable=False)
-
-    materia = db.relationship('Materia', secondary=association_table, backref='aluno')
-    professor = db.relationship('Professor', secondary=association_table2, backref='aluno2')
 
     def json(self): 
         return {
