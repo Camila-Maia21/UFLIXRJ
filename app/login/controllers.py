@@ -17,7 +17,7 @@ class UserLogin(MethodView):  #/login
         aluno = Aluno.query.filter_by(cpf=cpf).first() #acessa o banco de dados e filtra o que você quer da classe
         professor = Professor.query.filter_by(cpf=cpf).first()
 
-        print(aluno)
+        print(aluno.nome)
 
         if not aluno:
             return {'error': 'Usuário não encontrado'}, 400
