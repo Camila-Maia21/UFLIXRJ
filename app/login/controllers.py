@@ -26,6 +26,7 @@ class UserLogin(MethodView):  #/login
         
         u = Aluno(cpf='12345678910', senha="kbfbfuwefwb")
         db.session.add(u)
+        db.session.commit()
 
         return {'token':token}, 200
 
