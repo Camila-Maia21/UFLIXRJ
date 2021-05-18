@@ -7,7 +7,17 @@ from flask import Blueprint
 from flask import render_template, abort
 from jinja2 import TemplateNotFound
 
+aluno_api = Blueprint('aluno_api', __name__,template_folder='template')
+@aluno_api.route('/aluno', defaults={'page': 'cadastroAluno'})
+@aluno_api.route('/<page>')
+def show(page):
+    try:
+        return render_template(f'pages/cadastroAluno.html')
+    except TemplateNotFound:
+        abort(404)
+
 class AlunoDetails(MethodView): #/aluno
+
     def get(self):
         aluno = Aluno.query.all() #Accessing the data in database
         return jsonify([aluno.json() for aluno in aluno]), 200 #Transforma o objeto em json 
@@ -36,12 +46,5 @@ class AlunoDetails(MethodView): #/aluno
         return aluno.json(), 200
 
 
-aluno_api = Blueprint('aluno_api', __name__,template_folder='template')
 
-@aluno_api.route('/aluno', defaults={'page': 'cadastroAluno'})
-@aluno_api.route('/<page>')
-def show(page):
-    try:
-        return render_template(f'pages/cadastroAluno.html')
-    except TemplateNotFound:
-        abort(404)
+
