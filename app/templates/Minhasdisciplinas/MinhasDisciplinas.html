@@ -39,21 +39,11 @@
                 
             </div>
             
-            
-            
-            <div class ="materia-container"></div>
-            <div class ="materia-container"></div>
-            <div class ="materia-container"></div>
-            <div class ="materia-container"></div>
+            {%for materia in materias %}
+            <div  id="ad"><a href="{{url_for('materia_especifica', nome = materia.nome)}}"><p class ="profileName">{{materia.nome}}</p></a></div>
+            {% endfor %}
         </div>
-        <div id = "materias">
-            <div class ="materia-container"></div>
-            <div class ="materia-container"></div>
-            <div class ="materia-container"></div>
-            <div class ="materia-container"></div>
-            <div class ="materia-container"></div>
-        </div>
-
+        
         </div>
 
     </body>

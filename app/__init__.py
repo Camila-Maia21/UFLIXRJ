@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, render_template
 from app.extensions import db, migrate, jwt
 from app.config import Config
 
@@ -6,7 +6,6 @@ from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
 from app.materia.routes import materia_api
 from app.login.routes import login_api
-
 
 def create_app():
     app = Flask(__name__)
@@ -24,5 +23,9 @@ def create_app():
     @app.route('/')
     def pagina_inicial():
         return redirect ("/login")
+    
+    @app.route('/materia/<nome>')
+    def materia_especifica(nome):
+        return render_template ("Disciplinas/Disciplinas.html")
 
     return app
