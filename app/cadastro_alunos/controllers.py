@@ -51,14 +51,14 @@ class AlunoDetails(MethodView): #/aluno
         
     
     def post(self): 
-        data = request.json 
+        data = request.form
 
-        nome = data.get('nome')
-        email = data.get('email')
-        cpf = data.get('cpf')
-        dre = data.get('dre')
-        curso = data.get('curso')
-        senha = str(data.get('senha'))
+        nome = data['nome']
+        email = data['email']
+        cpf = data['cpf']
+        dre = data['dre']
+        curso = data['curso']
+        senha = str(data['senha'])
 
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(dre, str) or not isinstance(curso, str):
             return {"error" : "Algum tipo invalido"}, 400
@@ -70,4 +70,4 @@ class AlunoDetails(MethodView): #/aluno
         db.session.add(aluno)
         db.session.commit()
 
-        return redirect('/login')
+        return render_template("Login/Login.html")

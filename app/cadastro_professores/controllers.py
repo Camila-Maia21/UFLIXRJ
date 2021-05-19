@@ -28,4 +28,8 @@ class ProfessorDetails(MethodView): #/professor
         db.session.add(professor)
         db.session.commit()
 
-        return redirect('materia/current')
+        return render_template("Login/Login.html")
+
+        #redirect('/login')
+
+        

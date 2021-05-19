@@ -13,7 +13,7 @@ class UserLogin(MethodView):  #/login
 
     def post(self):
 
-        return request.form['cpf']
+        return request.form 
 
         dados = request.json
 
