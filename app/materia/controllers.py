@@ -25,7 +25,7 @@ class MateriaDetails(MethodView): #/materia
         db.session.add(materia)
         db.session.commit()
 
-        return redirect ('/disciplina')
+        return render_template("CriarDisciplina/CriarDisciplina.html")
 
         #return redirect('/login')
 

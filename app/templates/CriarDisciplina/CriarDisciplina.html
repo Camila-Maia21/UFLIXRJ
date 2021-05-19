@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Criar Disciplina</title>
+        <meta charset="UTF-8">
+        <link href="{{ url_for ('static', filename='CriarDisciplina.css')}}" rel="stylesheet">
+    </head>
+
+    <body>
+  
+        <div id = "header">
+            <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
+            <div  id= "p">
+                <div id= "profile-box">
+                    <img src="../../static/imagens/profile-user (1) 1.png" alt="profile" id= "profile">
+                    <p id = "profileName">Camila Maia</p>
+                </div>
+
+                <img src="../../static/imagens/logout (1) 1.png" alt="leave" id= "leave">
+            </div>
+        </div>  
+
+        <div id = "main">      
+            <div><h1>Criar Disciplina</h1></div>
+    
+            <form action="/materias" method="POST">
+            <div class= "text"> 
+                <label for="nome" id="profileName">Nome:</label><br>
+                <input class = "input" type="text" id="nome" name="nome"><br><br>
+            
+                <label for="periodo" id="profileName">Período:</label><br>
+                <input class = "input" type="text" id="periodo" name="periodo"><br><br>
+    
+                <label for="codigodadisciplina" id="profileName">Código da matéria:</label><br>
+                <input class = "input" type="text" id="codigodadisciplina" name="codigodadisciplina"><br><br>
+    
+                <label for="codigodamateria" id="profileName">Código da matéria:</label><br>
+                <input class = "input" type="text" id="codigodamateria" name="codigodamateria"><br><br>
+            </div>
+
+                <input class = "button" type="submit" value="Criar">
+            </form>
+        </div>
+
+
+    </body>
+</html>
