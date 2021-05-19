@@ -4,19 +4,19 @@ from flask import  request, render_template, redirect
 from flask.views import MethodView
 import bcrypt 
 
-class ProfessorDetails(MethodView): #professor
+class ProfessorDetails(MethodView): #/professor
     def get(self):
         professor = Professor.query.all() #Accessing the data in database
         return render_template("CadastroProfessor/cadastroProfessor.html") #Transforma o objeto em json 
 
     def post(self): 
-        data = request.json
+        data = request.form
 
-        nome = data.get('nome')
-        email = data.get('email')
-        cpf = data.get('cpf')
-        siape = data.get('cpf')
-        senha = str(data.get('senha'))
+        nome = data['nome']
+        email = data['email']
+        cpf = data['cpf']
+        siape = data['siape']
+        senha = str(data['senha'])
 
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(siape, str):
             return {"error" : "Algum tipo invalido"}, 400
@@ -28,4 +28,4 @@ class ProfessorDetails(MethodView): #professor
         db.session.add(professor)
         db.session.commit()
 
-        return redirect('/materias')
+        return redirect('materia/current')

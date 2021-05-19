@@ -12,6 +12,7 @@ gunicorn = "*"
 psycopg2 = "*"
 flask-jwt-extended = "*"
 jinja2 = "*"
+flask-wtf = "*"
 
 [dev-packages]
 

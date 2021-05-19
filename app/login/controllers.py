@@ -13,6 +13,8 @@ class UserLogin(MethodView):  #/login
 
     def post(self):
 
+        return request.form
+
         dados = request.json
 
         cpf = dados.get('cpf')
@@ -27,7 +29,7 @@ class UserLogin(MethodView):  #/login
         token = create_access_token(identity=aluno.id)
         token = create_access_token(identity=professor.id)
 
-        return request.json
+        
         
         #redirect ('/materia/current')
 
