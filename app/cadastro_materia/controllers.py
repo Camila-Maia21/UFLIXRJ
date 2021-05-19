@@ -12,7 +12,7 @@ class MateriaCurrent(MethodView): #/materia/current
 
     def get(self):
         materia = Materia.query.all() #Accessing the data in database
-        return render_template("CadastroAluno/cadastroAluno.html") #Transforma o objeto em json 
+        return render_template("Minhasdisciplinas/MinhasDisciplinas.html") #Transforma o objeto em json 
         
 class MateriaDetails(MethodView):   #/materia/criar
     def post(self): 

@@ -25,4 +25,6 @@ class MateriaDetails(MethodView):  #materia/details
         db.session.add(materia)
         db.session.commit()
 
-        return redirect('/login')
+        return render_template("Video/video.html")
+
+        #return redirect('/login')

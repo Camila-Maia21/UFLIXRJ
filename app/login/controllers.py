@@ -21,9 +21,6 @@ class UserLogin(MethodView):  #/login
         aluno = Aluno.query.filter_by(cpf=cpf).first() #acessa o banco de dados e filtra o que você quer da classe
         professor = Professor.query.filter_by(cpf=cpf).first()
 
-        print(aluno.nome)
-        print(professor.nome)
-
         token = create_access_token(identity=aluno.id)
         token = create_access_token(identity=professor.id)
 
