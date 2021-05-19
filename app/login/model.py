@@ -6,8 +6,3 @@ class Login(BaseModel):
     id = db.Column(db.Integer, primary_key = True)
     cpf = db.Column(db.String(50), nullable = False)
     senha_hash = db.Column(db.String(20), nullable = False) 
-
-    def json(self): 
-        return {
-            "cpf": self.cpf
-        }

@@ -10,12 +10,3 @@ class Aluno(BaseModel):
     dre = db.Column(db.String(50), nullable=False, unique = True)
     curso = db.Column(db.String(50), nullable=False)
     senha_hash = db.Column(db.String(280), nullable=False)
-
-    def json(self): 
-        return {
-            "nome": self.nome,
-            "email": self.email,
-            "cpf": self.cpf,
-            "dre": self.dre,
-            "curso": self.curso
-        }

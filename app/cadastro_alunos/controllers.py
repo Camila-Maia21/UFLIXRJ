@@ -7,6 +7,7 @@ from flask import Blueprint
 from flask import render_template, abort
 from jinja2 import TemplateNotFound
 
+
 class AlunoDetails(MethodView): #/aluno
 
     def get(self):
@@ -35,7 +36,6 @@ class AlunoDetails(MethodView): #/aluno
         db.session.commit()
 
         return aluno.json(), 200
-
 
 
 
