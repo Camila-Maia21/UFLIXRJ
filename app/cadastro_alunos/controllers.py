@@ -7,6 +7,15 @@ from flask import Blueprint
 from flask import render_template, abort
 from jinja2 import TemplateNotFound
 
+app_aluno = Blueprint('simple_page', __name__, template_folder='templates')
+
+@app_aluno.route('/', defaults={'page': 'index'})
+@app_aluno.route('/<page>')
+def show(page):
+    try:
+        return render_template(f'pages/{page}.html')
+    except TemplateNotFound:
+        abort(404)
 
 class AlunoDetails(MethodView): #/aluno
 
@@ -36,6 +45,5 @@ class AlunoDetails(MethodView): #/aluno
         db.session.commit()
 
         return aluno.json(), 200
-
 
 
