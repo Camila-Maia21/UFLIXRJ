@@ -12,10 +12,8 @@ class UserLogin(MethodView):  #/login
         return render_template("Login/Login.html") #Transforma o objeto em json 
 
     def post(self):
-
-        return request.form 
-
-        dados = request.json
+       
+        dados = request.form
 
         cpf = dados.get('cpf')
         senha = str(dados.get('senha'))
@@ -29,9 +27,7 @@ class UserLogin(MethodView):  #/login
         token = create_access_token(identity=aluno.id)
         token = create_access_token(identity=professor.id)
 
-        
-        
-        #redirect ('/materia/current')
+        return redirect ('/materia')
 
 '''
         if aluno.nome != 'Camila':
