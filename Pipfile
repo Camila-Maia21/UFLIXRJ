@@ -13,6 +13,7 @@ psycopg2 = "*"
 flask-jwt-extended = "*"
 jinja2 = "*"
 flask-wtf = "*"
+flask-login = "*"
 
 [dev-packages]
 

@@ -4,8 +4,8 @@ from app.cadastro_alunos.model import Aluno
 from flask import request, render_template, redirect
 from flask.views import MethodView
 import bcrypt 
-from flask_jwt_extended import create_access_token
-from app.extensions import db 
+from flask_jwt_extended import create_access_token, current_user
+from app.extensions import db, jwt
 
 class UserLogin(MethodView):  #/login
     def get(self):
@@ -21,17 +21,14 @@ class UserLogin(MethodView):  #/login
         aluno = Aluno.query.filter_by(cpf=cpf).first() #acessa o banco de dados e filtra o que você quer da classe
         professor = Professor.query.filter_by(cpf=cpf).first()
 
-        token = create_access_token(identity=aluno.id)
-        token = create_access_token(identity=professor.id)
+        if aluno and bcrypt.checkpw(senha.encode(), aluno.senha_hash):
+            token = create_access_token(identity=aluno.id)
+        elif professor and bcrypt.checkpw(senha.encode(), professor.senha_hash):
+            token = create_access_token(identity=professor.id)
+        else:
+            return {'error': 'usuario nao existente'}
 
         return redirect ('/materia')
 
-'''
-        if aluno.nome != 'Camila':
-            return {'error': 'Usuário não encontrado'}, 400
+#flask_jwt_extended.get_current_user()[source]
 
-        if not professor or not bcrypt.checkpw(senha.encode(), professor.senha_hash):
-            return {'error': 'Usuário não encontrado'}, 400
-'''
-
-        
