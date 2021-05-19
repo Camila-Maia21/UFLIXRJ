@@ -1,12 +1,12 @@
 from app.materia.model import Materia
 from app.extensions import db
-from flask import jsonify, request 
-from flask.views import MethodView
+from flask import request, render_template, redirect
+from flask.views import MethodView 
 
 class MateriaCurrent(MethodView): #materia/current
     def get(self):
         materia = Materia.query.all() #Accessing the data in database
-        return jsonify([materia.json() for materia in materia]), 200 #Transforma o objeto em json 
+        return render_template("Minhasdisciplinas/MinhasDisciplinas.html") #Transforma o objeto em json 
 
 class MateriaDetails(MethodView): #/materia
     
@@ -26,4 +26,4 @@ class MateriaDetails(MethodView): #/materia
         db.session.add(materia)
         db.session.commit()
 
-        return materia.json(), 200
+        return redirect('/materia')

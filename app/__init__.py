@@ -1,4 +1,4 @@
-from flask import Flask 
+from flask import Flask, redirect
 from app.extensions import db, migrate, jwt
 from app.config import Config
 
@@ -15,12 +15,14 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
-    ma.init_app(app)
     
     app.register_blueprint(professor_api)
     app.register_blueprint(aluno_api)
     app.register_blueprint(materia_api)
     app.register_blueprint(login_api)
 
+    @app.route('/')
+    def pagina_inicial():
+        return redirect ("/login")
 
     return app

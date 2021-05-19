@@ -1,5 +1,5 @@
 body{
-   background-image: url("../imagens/backgroundImage.webp");
+   background-image: url("./imagens/backgroundImage.webp");
    background-size: cover;
    }
 #main{

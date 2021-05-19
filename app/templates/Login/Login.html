@@ -2,17 +2,17 @@
     <head>
         <title>Página de Login</title>
         <meta charset="UTF-8">
-        <link href="styles.css" rel="stylesheet">
+        <link href="{{ url_for ('static', filename='login.css')}}" rel="stylesheet">
     </head>
 
     <body>
     <div id = "main">
 
 
-        <img src="../imagens/logo.png" alt="Minerva" class= "m-image">
+        <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
 
 
-        <form action="/" method="url">
+        <form action="/login" method="POST">
         <div class= "text">  
             <label for="cpf" class="">CPF:</label><br>
             <input class = "input" type="text" id="cpf" nome="cpf"><br><br>
@@ -25,12 +25,12 @@
         
         <h4>Ainda não possui cadastro?</h4>
     
-        <form action="/" method="POST">
+        <form action="/aluno" method="GET">
         
             <input class = "button" type="submit" value="Cadastrar novo aluno">
         </form>
         <h5 id= "or">ou</h5>
-        <form action="/" method="POST">
+        <form action="/professor" method="GET">
         
             <input class = "button" type="submit" value="Cadastrar novo professor">
         </form>

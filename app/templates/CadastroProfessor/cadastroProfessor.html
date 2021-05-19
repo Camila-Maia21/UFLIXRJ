@@ -2,18 +2,20 @@
     <head>
         <title>Página de Login</title>
         <meta charset="UTF-8">
-        <link href="styles.css" rel="stylesheet">
+        <link href="{{ url_for ('static', filename='cadastro_professor.css')}}" rel="stylesheet">
     </head>
 
     <body>
     <div id = "main">
         <div>
-        <img src="../imagens/Group (1).png" alt="Minerva" class= "arrow-image">
+        <a href="/login"> 
+        <img src="../../static/imagens/Group (1).png" alt="Minerva" class= "arrow-image">
+        </a>
         </div>
-        <img src="../imagens/logo.png" alt="Minerva" class= "main-image">
+        <img src="../../static/imagens/logo.png" alt="Minerva" class= "main-image">
 
 
-        <form action="https://app-uflix.herokuapp.com/aluno" method="POST">
+        <form action="/professor" method="POST">
         <div class= "text"> 
             <label for="nome" class="">Nome:</label><br>
             <input class = "input" type="text" id="nome" nome="nome"><br><br>
@@ -24,11 +26,8 @@
             <label for="email" class="">E-mail:</label><br>
             <input class = "input" type="text" id="email" nome="email"><br><br>
 
-            <label for="DRE" class="">DRE:</label><br>
-            <input class = "input" type="text" id="DRE" nome="DRE"><br><br>
-
-            <label for="curso" class="">Curso:</label><br>
-            <input class = "input" type="text" id="curso" nome="curso"><br><br>
+            <label for="SIAPE" class="">SIAPE:</label><br>
+            <input class = "input" type="text" id="siape" nome="siape"><br><br>
             
             <label for="senha">Senha:</label><br>
             <input  class = "input" type="password" id="senha" nome="senha"><br><br>

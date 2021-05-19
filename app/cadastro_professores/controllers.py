@@ -1,14 +1,14 @@
 from app.cadastro_professores.model import Professor
 from app.extensions import db
-from flask import jsonify, request 
+from flask import  request, render_template, redirect
 from flask.views import MethodView
 import bcrypt 
 
 class ProfessorDetails(MethodView): #professor
     def get(self):
         professor = Professor.query.all() #Accessing the data in database
-        return jsonify([professor.json() for professor in professor]), 200 #Transforma o objeto em json 
-    
+        return render_template("CadastroProfessor/cadastroProfessor.html") #Transforma o objeto em json 
+
     def post(self): 
         data = request.json
 
@@ -28,4 +28,4 @@ class ProfessorDetails(MethodView): #professor
         db.session.add(professor)
         db.session.commit()
 
-        return professor.json(), 200
+        return redirect('/materias')

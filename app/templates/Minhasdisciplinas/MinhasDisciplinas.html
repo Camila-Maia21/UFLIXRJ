@@ -2,20 +2,20 @@
     <head>
         <title>Minhas Disciplinas</title>
         <meta charset="UTF-8">
-        <link href="styles.css" rel="stylesheet">
+        <link href="{{ url_for ('static', filename='materias.css')}}" rel="stylesheet">
     </head>
 
     <body>
   
         <div id = "header">
-            <img src="../imagens/logo.png" alt="Minerva" class= "m-image">
+            <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
             <div  id= "p">
                 <div id= "profile-box">
-                    <img src="../imagens/profile-user (1) 1.png" alt="profile" id= "profile">
+                    <img src="../../static/imagens/profile-user (1) 1.png" alt="profile" id= "profile">
                     <p id = "profileName">Camila Maia</p>
                 </div>
 
-                <img src="../imagens/logout (1) 1.png" alt="leave" id= "leave">
+                <img src="../../static/imagens/logout (1) 1.png" alt="leave" id= "leave">
             </div>
         </div>  
 
