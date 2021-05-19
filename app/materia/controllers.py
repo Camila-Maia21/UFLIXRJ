@@ -4,10 +4,10 @@ from flask import request, render_template, redirect
 from flask.views import MethodView
 
 
-class MateriaDetails(MethodView): #/materia
+class MateriaDetails(MethodView): #/criardisciplina
     def get(self):
         materia = Materia.query.all() #Accessing the data in database
-        return render_template("Minhasdisciplinas/MinhasDisciplinas.html", materias=materia) #Transforma o objeto em json 
+        return render_template("CriarDisciplina/CriarDisciplina.html", materias=materia) #Transforma o objeto em json 
 
     def post(self): 
         data = request.form
@@ -25,7 +25,7 @@ class MateriaDetails(MethodView): #/materia
         db.session.add(materia)
         db.session.commit()
 
-        return render_template("CriarDisciplina/CriarDisciplina.html")
+        return render_template("MinhasDisciplinas/MinhasDisciplinas.html")
 
         #return redirect('/login')
 

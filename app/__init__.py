@@ -6,6 +6,7 @@ from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
 from app.materia.routes import materia_api
 from app.login.routes import login_api
+from app.minhas_disciplinas.routes import minhas_disciplinas_api
 
 def create_app():
     app = Flask(__name__)
@@ -19,11 +20,12 @@ def create_app():
     app.register_blueprint(aluno_api)
     app.register_blueprint(materia_api)
     app.register_blueprint(login_api)
+    app.register_blueprint(minhas_disciplinas_api)
 
     @app.route('/')
     def pagina_inicial():
         return redirect ("/login")
-    
+
     @app.route('/materia/<nome>')
     def materia_especifica(nome):
         return render_template ("Disciplinas/Disciplinas.html")
