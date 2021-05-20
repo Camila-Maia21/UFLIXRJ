@@ -7,7 +7,7 @@ from flask.views import MethodView
 class MateriaDetails(MethodView): #/criardisciplina
     def get(self):
         materia = Materia.query.all() #Accessing the data in database
-        return render_template("CriarDisciplina/CriarDisciplina.html") #Transforma o objeto em json 
+        return render_template("CriarDisciplina/CriarDisciplina.html")
 
     def post(self): 
         data = request.form
@@ -26,8 +26,6 @@ class MateriaDetails(MethodView): #/criardisciplina
         db.session.commit()
 
         return redirect('/materia')
-
-        #return redirect('/login')
 
 
     

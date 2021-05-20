@@ -7,7 +7,7 @@ import bcrypt
 class ProfessorDetails(MethodView): #/professor
     def get(self):
         professor = Professor.query.all() #Accessing the data in database
-        return render_template("CadastroProfessor/cadastroProfessor.html") #Transforma o objeto em json 
+        return render_template("CadastroProfessor/cadastroProfessor.html") 
 
     def post(self): 
         data = request.form
@@ -30,6 +30,5 @@ class ProfessorDetails(MethodView): #/professor
 
         return redirect ('/login')
 
-        #redirect('/login')
 
         

@@ -9,7 +9,7 @@ from app.extensions import db, jwt
 
 class UserLogin(MethodView):  #/login
     def get(self):
-        return render_template("Login/Login.html") #Transforma o objeto em json 
+        return render_template("Login/Login.html")
 
     def post(self):
        
@@ -30,5 +30,4 @@ class UserLogin(MethodView):  #/login
 
         return redirect ('/materia')
 
-#flask_jwt_extended.get_current_user()[source]
 

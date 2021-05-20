@@ -8,4 +8,4 @@ class MinhasDisciplinas(MethodView): #/materia
 
     def get(self):
         materia = Materia.query.all() #Accessing the data in database
-        return render_template("Minhasdisciplinas/MinhasDisciplinas.html", materias=materia) #Transforma o objeto em json 
+        return render_template("Minhasdisciplinas/MinhasDisciplinas.html", materias=materia)
