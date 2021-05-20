@@ -118,9 +118,9 @@ body{
    }
 
    .arrow-image {
-    height: 2.5%;
-    width: 2.5%;
-    margin-top: -3%;
-    margin-left: 3%;
+    height: 40px;
+    width: 40px;
+    margin-top: 40px;
+    margin-left: 40px;
 
 }
