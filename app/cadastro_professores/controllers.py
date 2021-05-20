@@ -28,7 +28,7 @@ class ProfessorDetails(MethodView): #/professor
         db.session.add(professor)
         db.session.commit()
 
-        return render_template("Login/Login.html")
+        return redirect ('/login')
 
         #redirect('/login')
 

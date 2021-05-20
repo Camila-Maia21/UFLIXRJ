@@ -35,4 +35,4 @@ class AlunoDetails(MethodView): #/aluno
         db.session.add(aluno)
         db.session.commit()
 
-        return render_template("Login/Login.html")
+        return redirect ('/login')
