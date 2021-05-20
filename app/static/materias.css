@@ -135,3 +135,10 @@ h1 {
 #ad:hover {
     background-color: rgb(42,34,93,0.7);
 }
+
+a{
+    color: #F5f5f5;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+}
