@@ -25,9 +25,13 @@ def create_app():
     @app.route('/')
     def pagina_inicial():
         return redirect ("/login")
-
+    
     @app.route('/materia/<nome>')
     def materia_especifica(nome):
-        return render_template ("Disciplinas/Disciplinas.html")
+        return render_template ("Disciplina/Disciplina.html")
+
+    @app.route('/materia/video')
+    def video_materia():
+        return render_template ("Video/video.html")
 
     return app
