@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Criar Disciplina</title>
+        <meta charset="UTF-8">
+        <link href="{{ url_for ('static', filename='CriarDisciplina_professor.css')}}" rel="stylesheet">
+    </head>
+
+    <body>
+  
+        <div id = "header">
+            <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
+            <div  id= "p">
+                <div id= "profile-box">
+                    <img src="../../static/imagens/profile-user (1) 1.png" alt="profile" id= "profile">
+                    <p id = "profileName">Aluno</p>
+                </div>
+
+                <a href="/login" id= "leave">
+                    <img src="../../static/imagens/logout (1) 1.png" alt="leave">
+
+                </a>
+            </div>
+        </div>   
+
+        <div id = "main">      
+            <div><h1>Criar Disciplina</h1></div>
+    
+            <form action="/criardisciplina" method="POST">
+            <div class= "text"> 
+                <label for="nome" id="profileName">Nome:</label><br>
+                <input class = "input" type="text" id="nome" name="nome"><br><br>
+            
+                <label for="periodo" id="profileName">Período:</label><br>
+                <input class = "input" type="text" id="periodo" name="periodo"><br><br>
+    
+                <label for="codigo_materia" id="profileName">Código da disciplina:</label><br>
+                <input class = "input" type="text" id="codigo_materia" name="codigo_materia"><br><br>
+    
+                <label for="codigo_turma" id="profileName">Código da turma:</label><br>
+                <input class = "input" type="text" id="codigo_turma" name="codigo_turma"><br><br>
+            </div>
+
+                <input class = "button" type="submit" value="Criar">
+            </form>
+        </div>
+
+
+    </body>
+</html>

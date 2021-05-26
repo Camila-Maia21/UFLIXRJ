@@ -4,7 +4,7 @@ from app.config import Config
 
 from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
-from app.materia.routes import materia_api
+from app.criar_disciplina.routes import criar_disciplina
 from app.login.routes import login_api
 from app.minhas_disciplinas.routes import minhas_disciplinas_api
 
@@ -18,7 +18,7 @@ def create_app():
     
     app.register_blueprint(professor_api)
     app.register_blueprint(aluno_api)
-    app.register_blueprint(materia_api)
+    app.register_blueprint(criar_disciplina)
     app.register_blueprint(login_api)
     app.register_blueprint(minhas_disciplinas_api)
 
