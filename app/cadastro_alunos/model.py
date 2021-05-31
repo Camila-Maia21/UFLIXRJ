@@ -11,6 +11,13 @@ class Aluno(BaseModel):
     curso = db.Column(db.String(50), nullable=False)
     senha_hash = db.Column(db.String(280), nullable=False)
 
+    #role 
+    '''
+    {% if current_user.role is_authenticated %}
+     Hi {{ current_user.nome }}!
+     {% endif %}
+    '''
+
     def json(self): 
         return {
             "nome": self.nome,

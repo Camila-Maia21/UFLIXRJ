@@ -1,6 +1,6 @@
-from app.criar_disciplina.model import Materia
+from app.criar_disciplina.model import CriarDisciplina
 from app.extensions import db
-from flask import request, render_template, redirect
+from flask import request, render_template, redirect, jsonify
 from flask.views import MethodView
 from app.cadastro_alunos.model import Aluno
 from app.cadastro_professores.model import Professor
@@ -25,12 +25,64 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
         if not isinstance(materia, str) or not isinstance(periodo, str) or not isinstance(codigo_materia, str) or not isinstance(codigo_turma, str):
             return {"error" : "Algum tipo invalido"}, 400
 
-        materia = Materia(materia=materia, professor=professor, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma)
+        criardisciplina = CriarDisciplina(materia=materia, professor=professor, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma)
 
-        db.session.add(materia)
+        db.session.add(criardisciplina)
         db.session.commit()
 
         return redirect('/materia')
+
+class CriarDisciplinaEdit(MethodView): #/criardisciplina/edit/<int:id>
+    def get(self,id):
+        criardisciplina = CriarDisciplina.get_or_404(id)
+        return criardisciplina.json(),200
+
+    def put(self,id):
+        criardisciplina = CriarDisciplina.get_or_404(id)
+        data = request.json      
+        materia = data['materia']
+        professor = data['professor']
+        periodo = data['periodo']
+        codigo_materia = data['codigo_materia']
+        codigo_turma = data['codigo_turma']
+
+        
+        criardisciplina.materia = materia
+        criardisciplina.professor = professor
+        criardisciplina.periodo = periodo
+        criardisciplina.codigo_materia = codigo_materia
+        criardisciplina.codigo_turma = codigo_turma
+        
+        db.session.commit()
+        return criardisciplina.json() , 200
+
+    def patch(self,id):
+        criardisciplina = CriarDisciplina.query.get_or_404(id)
+        dados = request.json 
+
+        data = request.json    
+
+        materia = data['materia', criardisciplina.materia]
+        professor = data['professor', criardisciplina.professor]
+        periodo = data['periodo', criardisciplina.periodo]
+        codigo_materia = data['codigo_materia', criardisciplina.codigo_materia]
+        codigo_turma = data['codigo_turma', criardisciplina.codigo_turma]       
+
+        criardisciplina.materia = materia
+        criardisciplina.professor = professor
+        criardisciplina.periodo = periodo
+        criardisciplina.codigo_materia = codigo_materia
+        criardisciplina.codigo_turma = codigo_turma
+
+
+        db.session.commit()
+        return criardisciplina.json() , 200
+
+    def delete(self,id):
+        criardisciplina = CriarDisciplina.query.get_or_404(id)
+        db.session.delete(criardisciplina)
+        db.session.commit()
+        return criardisciplina.json(), 200
 
 
     

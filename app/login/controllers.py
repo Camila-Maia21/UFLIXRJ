@@ -29,6 +29,10 @@ class UserLogin(MethodView):  #/login
             return {'error': 'usuario nao existente'}
 
         return redirect ('/materia')
+
+        #Login User -> cria uma seção (carregar informações do usuário)
+        #logout User -> encerra a seção
+        #current_user.id
 '''
 class AlunoLogin(MethodView): #/aluno/login
     def post(self):

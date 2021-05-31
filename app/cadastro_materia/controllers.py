@@ -6,7 +6,7 @@ import bcrypt
 from flask import Blueprint
 from flask import render_template
 from jinja2 import TemplateNotFound
-from flask import redirect
+from flask import redirect, jsonify
 
 class MateriaCurrent(MethodView): #/materia/current
 
@@ -33,3 +33,58 @@ class MateriaDetails(MethodView):   #/materia/criar
         db.session.commit()
 
         return render_template("Login/Login.html")
+
+class MateriaEdit(MethodView): #/materia/edit/<int:id>
+    def get(self,id):
+        materia = Materia.get_or_404(id)
+        return materia.json(),200
+
+    def put(self,id):
+        materia = Materia.get_or_404(id)
+        data = request.json      
+        professor = data['professor']
+        nome = data['nome']
+        periodo = data['periodo']
+        codigo_materia = data['codigo_materia']
+        codigo_turma = data['codigo_turma']
+
+        materia.professor = professor
+        materia.nome = nome
+        materia.periodo = periodo
+        materia.codigo_materia = codigo_materia
+        materia.codigo_turma = codigo_turma
+        
+        db.session.commit()
+        return materia.json() , 200
+
+    def patch(self,id):
+        materia = Materia.query.get_or_404(id)
+        dados = request.json 
+
+        data = request.json    
+        professor = data['professor', materia.professor]
+        nome = data['nome', materia.nome]
+        periodo = data['periodo', materia.periodo]
+        codigo_materia = data['codigo_materia', materia.codigo_materia]
+        codigo_turma = data['codigo_turma', materia.codigo_turma]       
+
+        materia.professor = professor
+        materia.nome = nome
+        materia.periodo = periodo
+        materia.codigo_materia = codigo_materia
+        materia.codigo_turma = codigo_turma
+
+
+        db.session.commit()
+        return materia.json() , 200
+
+    def delete(self,id):
+        materia = Materia.query.get_or_404(id)
+        db.session.delete(materia)
+        db.session.commit()
+        return materia.json(), 200
+
+    #current_user.materias 
+    #query.all(id) == current.user.id
+    #many to many -> aluno para materias
+    #one to many -> professor para materias
