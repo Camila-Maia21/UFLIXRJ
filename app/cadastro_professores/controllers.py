@@ -3,12 +3,12 @@ from app.extensions import db
 from flask import  request, render_template, redirect
 from flask.views import MethodView
 import bcrypt 
-from flask import jsonify
+from flask_jwt_extended import current_user
 
 class ProfessorDetails(MethodView): #/professor
     def get(self):
         professor = Professor.query.all() #Accessing the data in database
-        return render_template("CadastroProfessor/cadastroProfessor.html") 
+        return render_template("CadastroProfessor/cadastroProfessor.html", user=current_user) 
 
     def post(self): 
         data = request.form
@@ -30,7 +30,7 @@ class ProfessorDetails(MethodView): #/professor
         db.session.add(professor)
         db.session.commit()
 
-        return redirect ('/login')
+        return redirect ('/login', user=current_user)
 
 class ProfessorDetails(MethodView): #/professor/<int:id>
     def get(self,id):

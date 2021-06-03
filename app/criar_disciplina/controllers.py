@@ -1,17 +1,18 @@
 from app.criar_disciplina.model import CriarDisciplina
 from app.extensions import db
-from flask import request, render_template, redirect, jsonify
+from flask import request, render_template, redirect
 from flask.views import MethodView
 from app.cadastro_alunos.model import Aluno
 from app.cadastro_professores.model import Professor
+from flask_jwt_extended import current_user
 
 class CriarDisciplinaDetails(MethodView): #/criardisciplina
     def get(self):
         #materia = Materia.query.all() #Accessing the data in database
-        if Aluno:
-            return render_template("AdicionarDisciplina/AdiconarDisciplina.html")
-        elif Professor:
-            return render_template("CriarDisciplina/CriarDisciplina.html")
+        #if Aluno:
+            return render_template("AdicionarDisciplina/AdiconarDisciplina.html", user=current_user)
+        #elif Professor:
+        #    return render_template("CriarDisciplina/CriarDisciplina.html", user=current_user)
 
     def post(self): 
         data = request.form
@@ -30,7 +31,7 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
         db.session.add(criardisciplina)
         db.session.commit()
 
-        return redirect('/materia')
+        return redirect('/materia', user=current_user)
 
 class CriarDisciplinaEdit(MethodView): #/criardisciplina/edit/<int:id>
     def get(self,id):
