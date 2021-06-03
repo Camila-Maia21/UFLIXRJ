@@ -33,38 +33,3 @@ class UserLogin(MethodView):  #/login
         #Login User -> cria uma seção (carregar informações do usuário)
         #logout User -> encerra a seção
         #current_user.id
-'''
-class AlunoLogin(MethodView): #/aluno/login
-    def post(self):
-       
-        dados = request.form
-
-        cpf = dados.get('cpf')
-        senha = str(dados.get('senha'))
-
-        aluno = Aluno.query.filter_by(cpf=cpf).first() #acessa o banco de dados e filtra o que você quer da classe
-
-        if aluno and bcrypt.checkpw(senha.encode(), aluno.senha_hash):
-            token = create_access_token(identity=aluno.id)
-        else:
-            return {'error': 'usuario nao existente'}
-
-        return redirect ('/materia')
-
-class ProfessorLogin(MethodView): #/professor/login
-    def post(self):
-
-        dados = request.form
-
-        cpf = dados.get('cpf')
-        senha = str(dados.get('senha'))
-
-        professor = Professor.query.filter_by(cpf=cpf).first()
-
-        if professor and bcrypt.checkpw(senha.encode(), professor.senha_hash):
-            token = create_access_token(identity=professor.id)
-        else:
-            return {'error': 'usuario nao existente'}
-
-        return redirect ('/materia')
-'''
