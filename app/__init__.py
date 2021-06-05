@@ -7,7 +7,7 @@ from flask_jwt_extended import JWTManager
 from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
 from app.criar_disciplina.routes import criar_disciplina
-from app.login.routes import login_api
+from app.login.controllers import login_api
 from app.minhas_disciplinas.routes import minhas_disciplinas_api
 
 def create_app():

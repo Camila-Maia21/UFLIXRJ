@@ -1,3 +1,4 @@
+from flask_jwt_extended.view_decorators import jwt_required
 from app.cadastro_alunos.model import Aluno
 from app.extensions import db
 from flask import jsonify, request 
@@ -13,7 +14,7 @@ class AlunoCreate(MethodView): #/aluno
 
     def get(self):
         aluno = Aluno.query.all() #Accessing the data in database
-        return render_template("CadastroAluno/cadastroAluno.html", logged_in_as=current_user)
+        return render_template("CadastroAluno/cadastroAluno.html", user=current_user)
         
     
     def post(self): 
@@ -36,7 +37,7 @@ class AlunoCreate(MethodView): #/aluno
         db.session.add(aluno)
         db.session.commit()
 
-        return redirect ('/login', logged_in_as=current_user)
+        return redirect ('/login', user=current_user)
 
 class AlunoDetails(MethodView): #/aluno/<int:id>
     def get(self,id):

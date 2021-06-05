@@ -1,7 +1,8 @@
 from app.model import BaseModel
 from app.extensions import db
+from flask_login import UserMixin
 
-class Aluno(BaseModel): 
+class Aluno(UserMixin, db.Model): 
     __tablename_ = 'aluno'
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
