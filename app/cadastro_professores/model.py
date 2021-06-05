@@ -2,7 +2,7 @@ from app.model import BaseModel
 from app.extensions import db
 from flask_login import UserMixin
 
-class Professor(UserMixin, db.Model): 
+class Professor(UserMixin, BaseModel): 
     __tablename_ = 'professor'
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50), nullable=False)

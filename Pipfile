@@ -14,6 +14,7 @@ flask-jwt-extended = "*"
 jinja2 = "*"
 flask-wtf = "*"
 flask-login = "*"
+werkzeug = "*"
 
 [dev-packages]
 

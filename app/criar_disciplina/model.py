@@ -1,6 +1,7 @@
 from app.extensions import db
+from app.model import BaseModel
 
-class CriarDisciplina(db.Model): 
+class CriarDisciplina(BaseModel): 
     __tablename_ = 'criardisciplina'
     id = db.Column(db.Integer, primary_key=True)
     materia = db.Column(db.String(50), nullable=False)

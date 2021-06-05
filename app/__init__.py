@@ -26,7 +26,7 @@ def create_app():
     app.register_blueprint(main_api)
 
     from app.cadastro_professores.model import Professor
-    from app.cadastro_professores.model import Aluno
+    from app.cadastro_alunos.model import Aluno
 
     @login_manager.user_loader
     def load_user(cpf):

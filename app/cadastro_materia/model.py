@@ -1,6 +1,7 @@
 from app.extensions import db
+from app.model import BaseModel
 
-class Materia(db.Model): 
+class Materia(BaseModel): 
     __tablename_ = 'materia'
     id = db.Column(db.Integer, primary_key=True)
     professor = db.Column(db.String(5), nullable=False, unique = True)

@@ -1,15 +1,14 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
-from . import db
+import bcrypt 
+from werkzeug.security import generate_password_hash, check_password_hash
 from app.cadastro_professores.model import Professor
 from app.cadastro_alunos.model import Aluno
-import bcrypt 
-from app.cadastro_alunos.controllers import Aluno
-from app.cadastro_professores.controllers import Professor
+from app.extensions import db
 
 login_api = Blueprint('login_api', __name__)
 main_api = Blueprint('main', __name__)
+cadastro_api = Blueprint('cadastro', __name__)
 '''
 @main_api.route('/profile')
 @login_required
@@ -18,19 +17,19 @@ def profile():
 '''
 @login_api.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template("Login/Login.html")
 
 @login_api.route('/login', methods=['POST'])
 def login_post():
     cpf = request.form.get('cpf')
-    password = request.form.get('password')
+    senha = request.form.get('senha')
 
     user = Professor.query.filter_by(cpf=cpf).first()
-    if user is None or not user.check_password(user.password, password):
+    if not user and not bcrypt.checkpw(senha.encode(), user.senha_hash):
         user = Aluno.query.filter_by(cpf=cpf).first()
-        if user is None or not user.check_password(user.password, password):
+        if not user and not bcrypt.checkpw(senha.encode(), user.senha_hash):
             flash('Please check your login details and try again.')
-            return redirect(url_for('login'))
+            return redirect('/login')
 
     login_user(user)
     return redirect ('/materia')
@@ -40,7 +39,7 @@ def login_post():
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
+#if user is None or not bcrypt.checkpw(senha.encode(), login.senha_hash):
 '''
 class UserLogin(MethodView):  #/login
     def get(self):

@@ -8,5 +8,5 @@ aluno_api.add_url_rule(
 )
 #view_func -> responde as solicitações de seu aplicativo (requisições)
 aluno_api.add_url_rule(
-    '/aluno/<int:id>', view_func = AlunoDetails.as_view('aluno_details'), methods = ['GET', 'PATCH']
+    '/aluno/<int:id>', view_func = AlunoDetails.as_view('aluno_details'), methods = ['GET', 'PUT', 'PATCH', 'DELETE']
 )

@@ -4,9 +4,8 @@ from flask import  request, render_template, redirect
 from flask.views import MethodView
 import bcrypt
 
-class ProfessorDetails(MethodView): #/professor
+class ProfessorCurrent(MethodView): #/professor
     def get(self):
-        professor = Professor.query.all() #Accessing the data in database
         return render_template("CadastroProfessor/cadastroProfessor.html") 
 
     def post(self): 
@@ -24,7 +23,6 @@ class ProfessorDetails(MethodView): #/professor
         senha_hash = bcrypt.hashpw(senha.encode(), bcrypt.gensalt()) #criptografa senha e adiciona um "sal"
 
         professor = Professor(nome=nome, email=email , cpf=cpf, siape=siape, senha_hash=senha_hash)
-        #professor = User... 
 
         db.session.add(professor)
         db.session.commit()
