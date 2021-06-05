@@ -10,6 +10,7 @@ from app.minhas_disciplinas.routes import minhas_disciplinas_api
 
 def create_app():
     app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'thisismysecretkeydonotstealit'
     app.config.from_object(Config)
     login_manager.login_view = 'login.controllers.login'
     
