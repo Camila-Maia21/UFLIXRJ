@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from . import db
 from app.cadastro_professores.model import Professor
 from app.cadastro_alunos.model import Aluno
@@ -10,7 +10,13 @@ from app.cadastro_alunos.controllers import Aluno
 from app.cadastro_professores.controllers import Professor
 
 login_api = Blueprint('login_api', __name__)
-
+main_api = Blueprint('main', __name__)
+'''
+@main_api.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html', cpf=current_user.cpf)
+'''
 @login_api.route('/login')
 def login():
     return render_template('login.html')
@@ -19,7 +25,6 @@ def login():
 def login_post():
     cpf = request.form.get('cpf')
     password = request.form.get('password')
-    remember = True if request.form.get('remember') else False
 
     user = Professor.query.filter_by(cpf=cpf).first()
     if user is None or not user.check_password(user.password, password):
@@ -27,10 +32,8 @@ def login_post():
         if user is None or not user.check_password(user.password, password):
             flash('Please check your login details and try again.')
             return redirect(url_for('login'))
-        login_user(user)
-        next_page = request.args.get('next')
-        
-    login_user(user, remember=remember)
+
+    login_user(user)
     return redirect ('/materia')
 
 @login_api.route('/logout')

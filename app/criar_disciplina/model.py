@@ -1,4 +1,3 @@
-from app.model import BaseModel
 from app.extensions import db
 
 class CriarDisciplina(db.Model): 
