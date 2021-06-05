@@ -5,13 +5,12 @@ from flask.views import MethodView
 from flask import render_template
 from jinja2 import TemplateNotFound
 from flask import redirect
-from flask_jwt_extended import current_user
 
 class MateriaCurrent(MethodView): #/materia/current
 
     def get(self):
         materia = Materia.query.all() #Accessing the data in database
-        return render_template("Minhasdisciplinas/MinhasDisciplinas.html", user=current_user) 
+        return render_template("Minhasdisciplinas/MinhasDisciplinas.html") 
         
 class MateriaDetails(MethodView):   #/materia/criar
     def post(self): 
@@ -31,7 +30,7 @@ class MateriaDetails(MethodView):   #/materia/criar
         db.session.add(materia)
         db.session.commit()
 
-        return redirect('/login', user=current_user)
+        return redirect('/login')
 
 class MateriaEdit(MethodView): #/materia/edit/<int:id>
     def get(self,id):

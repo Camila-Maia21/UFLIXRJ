@@ -1,11 +1,10 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required
 from . import db
 from app.cadastro_professores.model import Professor
 from app.cadastro_alunos.model import Aluno
 import bcrypt 
-from flask_jwt_extended import create_access_token, current_user, jwt_required, get_jwt_identity
 from app.cadastro_alunos.controllers import Aluno
 from app.cadastro_professores.controllers import Professor
 

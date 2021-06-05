@@ -14,7 +14,6 @@ flask-jwt-extended = "*"
 jinja2 = "*"
 flask-wtf = "*"
 flask-login = "*"
-flask-jwt = "*"
 
 [dev-packages]
 

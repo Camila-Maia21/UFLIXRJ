@@ -1,7 +1,6 @@
 from flask import Flask, redirect, render_template
-from app.extensions import db, migrate, login_manager
+from app.extensions import db, jwt, migrate, login_manager
 from app.config import Config
-from flask_jwt_extended import JWTManager
 
 from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
@@ -14,7 +13,6 @@ def create_app():
     app.config.from_object(Config)
     login_manager.login_view = 'login.controllers.login'
     
-    jwt = JWTManager(app)
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
