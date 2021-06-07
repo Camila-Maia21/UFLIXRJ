@@ -7,11 +7,7 @@ from app.cadastro_professores.model import Professor
 
 class CriarDisciplinaDetails(MethodView): #/criardisciplina
     def get(self):
-        #materia = Materia.query.all() #Accessing the data in database
-        #if Aluno:
-            return render_template("AdicionarDisciplina/AdiconarDisciplina.html")
-        #elif Professor:
-        #    return render_template("CriarDisciplina/CriarDisciplina.html", user=current_user)
+            return render_template("CriarDisciplina/CriarDisciplina.html")
 
     def post(self): 
         data = request.form

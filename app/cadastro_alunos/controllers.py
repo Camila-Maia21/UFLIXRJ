@@ -11,7 +11,6 @@ from flask import redirect
 class AlunoCreate(MethodView): #/aluno
 
     def get(self):
-        aluno = Aluno.query.all() #Accessing the data in database
         return render_template("CadastroAluno/cadastroAluno.html")
         
     
