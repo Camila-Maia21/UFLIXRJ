@@ -16,6 +16,7 @@ class ProfessorCurrent(MethodView): #/professor
         cpf = data['cpf']
         siape = data['siape']
         senha = str(data['senha'])
+        
 
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(siape, str):
             return {"error" : "Algum tipo invalido"}, 400
