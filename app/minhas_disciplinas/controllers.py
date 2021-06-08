@@ -10,3 +10,4 @@ class MinhasDisciplinas(MethodView): #/materia
     def get(self):
         materia = CriarDisciplina.query.filter_by(professor_id = current_user.id) #Accessing the data in database
         return render_template("Minhasdisciplinas/MinhasDisciplinas.html", materias=materia)
+

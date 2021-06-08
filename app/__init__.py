@@ -2,6 +2,7 @@ from flask import Flask, redirect, render_template
 from app.extensions import db, jwt, migrate, login_manager
 from app.config import Config
 from flask_login import login_required
+from app.criar_disciplina.model import CriarDisciplina
 
 from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
@@ -43,11 +44,13 @@ def create_app():
     @app.route('/')
     def pagina_inicial():
         return redirect ("/login")
-    
-    @app.route('/materia/<materia>')
+
+    @app.route('/materia/<id>')
     @login_required
-    def materia_especifica(materia):
-        return render_template ("Disciplina/Disciplina.html", materia)
+    def materia_especifica(id):
+        id_materia = id
+        materia = CriarDisciplina.query.filter_by(id = id_materia).first()
+        return render_template ("Disciplina/Disciplina.html", materia= materia)
 
     @app.route('/materia/video')
     @login_required
@@ -55,3 +58,10 @@ def create_app():
         return render_template ("Video/video.html")
 
     return app
+
+''' 
+    @app.route('/materia/<materia>')
+    @login_required
+    def materia_especifica(materia):
+        return render_template ("Disciplina/Disciplina.html", materia)
+'''
