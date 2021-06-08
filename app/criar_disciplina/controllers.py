@@ -21,12 +21,15 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
         if not isinstance(materia, str) or not isinstance(periodo, str) or not isinstance(codigo_materia, str) or not isinstance(codigo_turma, str):
             return {"error" : "Algum tipo invalido"}, 400
 
+        #professor_id=current_user.id
+
         criardisciplina = CriarDisciplina(materia=materia, professor=professor, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma)
 
         db.session.add(criardisciplina)
         db.session.commit()
 
         return redirect('/materia')
+        
 
 class CriarDisciplinaEdit(MethodView): #/criardisciplina/edit/<int:id>
     def get(self,id):

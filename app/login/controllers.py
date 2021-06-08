@@ -41,3 +41,11 @@ def login_post():
 def logout():
     logout_user()
     return redirect ('/login')
+'''
+{{ current_user.nome }}
+{{ current_user.nome }}
+{{ if current_user==Usuario }}
+<a> botao 1</a>
+{{ elif current_user==Professor}}
+<a> botao2 </a>
+'''
