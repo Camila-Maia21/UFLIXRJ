@@ -18,7 +18,6 @@ class Aluno(UserMixin, BaseModel):
      Hi {{ current_user.nome }}!
      {% endif %}
     '''
-
     def json(self): 
         return {
             "nome": self.nome,

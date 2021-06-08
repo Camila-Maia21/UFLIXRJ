@@ -9,7 +9,7 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
     def get(self):
             return render_template("CriarDisciplina/CriarDisciplina.html")
 
-    def post(self): 
+    def post(self):
         data = request.form
 
         nome = data['nome']
