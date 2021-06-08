@@ -4,7 +4,7 @@ from flask import request, render_template, redirect
 from flask.views import MethodView
 from app.cadastro_alunos.model import Aluno
 from app.cadastro_professores.model import Professor
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 class CriarDisciplinaDetails(MethodView): #/criardisciplina
     def get(self):
@@ -30,7 +30,6 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
 
         return redirect('/materia')
         
-
 class CriarDisciplinaEdit(MethodView): #/criardisciplina/edit/<int:id>
     def get(self,id):
         criardisciplina = CriarDisciplina.get_or_404(id)

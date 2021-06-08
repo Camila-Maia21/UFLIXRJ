@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask_login.utils import login_required
 from app.minhas_disciplinas.controllers import (MinhasDisciplinas)
 
 minhas_disciplinas_api = Blueprint('minhas_disciplinas_api', __name__)

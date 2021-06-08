@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template
 from app.extensions import db, jwt, migrate, login_manager
 from app.config import Config
+from flask_login import login_required
 
 from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
@@ -42,10 +43,12 @@ def create_app():
         return redirect ("/login")
     
     @app.route('/materia/<materia>')
+    @login_required
     def materia_especifica(materia):
         return render_template ("Disciplina/Disciplina.html")
 
     @app.route('/materia/video')
+    @login_required
     def video_materia():
         return render_template ("Video/video.html")
 
