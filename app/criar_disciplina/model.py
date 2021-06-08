@@ -9,6 +9,8 @@ class CriarDisciplina(BaseModel):
     codigo_materia = db.Column(db.String(5), nullable=False, unique = True)
     codigo_turma = db.Column(db.String(5), nullable=False, unique = True)
 
+    professor_id = db.Column(db.Integer, db.ForeignKey('professor.id'))
+
     def json(self): 
         return {
             "materia": self.materia,

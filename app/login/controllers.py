@@ -40,7 +40,7 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    return redirect ('/login')
+    return redirect (url_for('login_api.login'))
 '''
 {{ current_user.nome }}
 {{ current_user.nome }}

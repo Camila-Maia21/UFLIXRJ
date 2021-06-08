@@ -4,6 +4,7 @@ from flask import request, render_template, redirect
 from flask.views import MethodView
 from app.cadastro_alunos.model import Aluno
 from app.cadastro_professores.model import Professor
+from flask_login import current_user
 
 class CriarDisciplinaDetails(MethodView): #/criardisciplina
     def get(self):
@@ -22,7 +23,7 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
 
         #professor_id=current_user.id
 
-        criardisciplina = CriarDisciplina(materia=materia, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma)
+        criardisciplina = CriarDisciplina(materia=materia, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma, professor_id=current_user.id)
 
         db.session.add(criardisciplina)
         db.session.commit()

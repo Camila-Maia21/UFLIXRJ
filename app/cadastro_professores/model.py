@@ -11,6 +11,8 @@ class Professor(UserMixin, BaseModel):
     siape = db.Column(db.String(50), nullable=False, unique = True)
     senha_hash = db.Column(db.LargeBinary(280), nullable=False)
 
+    criardisciplina = db.relationship("CriarDisciplina")
+
     def json(self): 
         return {
             "nome": self.nome,
