@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Criar Disciplina</title>
+        <meta charset="UTF-8">
+        <link href="{{ url_for ('static', filename='CriarDisciplina.css')}}" rel="stylesheet">
+    </head>
+
+    <body>
+  
+        <div id = "header">
+            <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
+            <div  id= "p">
+                <div id= "profile-box">
+                    <img src="../../static/imagens/profile-user (1) 1.png" alt="profile" id= "profile">
+                    <p id = "profileName">{{current_user.nome}}</p>
+                </div>
+
+                <a href="/logout" id= "leave">
+                    <img src="../../static/imagens/logout (1) 1.png" alt="leave">
+
+                </a>
+            </div>
+        </div>   
+
+        <div id = "main">      
+            <div><h1>Adicionar Vídeo</h1></div>
+    
+            <form action="/video/create" method="POST">
+            <div class= "text"> 
+                <label for="nome" id="profileName">Nome:</label><br>
+                <input class = "input" type="text" id="nome" name="nome"><br><br>
+            
+                <label for="descricao" id="profileName">Descrição:</label><br>
+                <input class = "input" type="text" id="descricao" name="descricao"><br><br>
+
+                <label for="link" id="profileName">Link:</label><br>
+                <input class = "input" type="text" id="link" name="link"><br><br>
+            </div>
+
+                <input class = "button" type="submit" value="Criar">
+            </form>
+        </div>
+
+
+    </body>
+</html>

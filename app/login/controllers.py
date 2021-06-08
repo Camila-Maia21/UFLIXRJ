@@ -27,9 +27,11 @@ def login_post():
     aluno = Aluno.query.filter_by(cpf=cpf).first()
     professor = Professor.query.filter_by(cpf=cpf).first()
     if aluno and bcrypt.checkpw(senha.encode(), aluno.senha_hash):
-        login_user(aluno)
+        user = aluno
+        login_user(user) 
     elif professor and bcrypt.checkpw(senha.encode(), professor.senha_hash):
-        login_user(professor)
+        user = professor
+        login_user(user)
     else:
             flash('Please check your login details and try again.')
             return redirect('/login')

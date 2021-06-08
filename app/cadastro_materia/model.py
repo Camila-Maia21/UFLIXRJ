@@ -13,6 +13,7 @@ class Materia(BaseModel):
 
     def json(self): 
         return {
+            "professor": self.professor,
             "nome": self.nome,
             "periodo": self.periodo,
             "codigo_materia": self.codigo_materia,
