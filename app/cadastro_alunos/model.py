@@ -12,6 +12,8 @@ class Aluno(UserMixin, BaseModel):
     curso = db.Column(db.String(50), nullable=False)
     senha_hash = db.Column(db.String(280), nullable=False)
 
+    criardisciplina = db.relationship("CriarDisciplina")
+
     #role 
     '''
     {% if current_user.role is_authenticated %}
