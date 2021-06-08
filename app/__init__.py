@@ -8,7 +8,7 @@ from app.cadastro_professores.routes import professor_api
 from app.criar_disciplina.routes import criar_disciplina
 from app.login.controllers import login_api, main_api
 from app.minhas_disciplinas.routes import minhas_disciplinas_api
-from app.video.routes import video_api
+from app.criar_video.routes import video_api
 
 def create_app():
     app = Flask(__name__)
@@ -47,7 +47,7 @@ def create_app():
     @app.route('/materia/<materia>')
     @login_required
     def materia_especifica(materia):
-        return render_template ("Disciplina/Disciplina.html")
+        return render_template ("Disciplina/Disciplina.html", materia)
 
     @app.route('/materia/video')
     @login_required

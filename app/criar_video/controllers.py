@@ -1,4 +1,4 @@
-from app.video.model import Video
+from app.criar_video.model import Video
 from app.extensions import db
 from flask import request, render_template, redirect
 from flask.views import MethodView
@@ -22,14 +22,12 @@ class VideoCreate(MethodView): #/video/create
         if not isinstance(nome, str) or not isinstance(descricao, str):
             return {"error" : "Algum tipo invalido"}, 400
 
-        #professor_id=current_user.id
-
         video = Video(nome=nome, descricao=descricao , link=link)
 
         db.session.add(video)
         db.session.commit()
 
-        return redirect('/materia/<materia>')
+        return redirect ('/materia')
         
 class VideoEdit(MethodView): #/video/edit/<int:id>
     def get(self,id):

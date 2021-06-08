@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.video.controllers import (VideoDetails, VideoCreate)
+from app.criar_video.controllers import (VideoDetails, VideoCreate)
 
 video_api = Blueprint('/video', __name__)
 
