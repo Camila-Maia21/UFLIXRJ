@@ -41,7 +41,7 @@
             </div>
             
             {%for materia in materias %}
-            <div class="materia-container" id="ad" ><a href="{{url_for('materia_especifica', materia = materia.materia)}}"><p class ="profileName">{{materia.materia}}</p></a></div>
+            <div class="materia-container" id="ad" ><a href="{{url_for('materia_especifica', materia = materia.nome)}}"><p class ="profileName">{{materia.nome}}</p></a></div>
             {% endfor %}
         </div>
         

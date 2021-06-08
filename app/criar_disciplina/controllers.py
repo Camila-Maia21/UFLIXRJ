@@ -12,18 +12,17 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
     def post(self): 
         data = request.form
 
-        materia = data['materia']
-        professor = data['professor']
+        nome = data['nome']
         periodo = data['periodo']
         codigo_materia = data['codigo_materia']
         codigo_turma = data['codigo_turma']
 
-        if not isinstance(materia, str) or not isinstance(periodo, str) or not isinstance(codigo_materia, str) or not isinstance(codigo_turma, str):
+        if not isinstance(nome, str) or not isinstance(periodo, str) or not isinstance(codigo_materia, str) or not isinstance(codigo_turma, str):
             return {"error" : "Algum tipo invalido"}, 400
 
         #professor_id=current_user.id
 
-        criardisciplina = CriarDisciplina(materia=materia, professor=professor, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma)
+        criardisciplina = CriarDisciplina(nome=nome, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma)
 
         db.session.add(criardisciplina)
         db.session.commit()
