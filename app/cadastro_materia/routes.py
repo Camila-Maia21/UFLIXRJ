@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.materia.controllers import (MateriaCurrent, MateriaDetails)
+from app.cadastro_materia.controllers import (MateriaCurrent, MateriaDetails)
 
 cadastro_materia_api = Blueprint('materia_api', __name__)
 
