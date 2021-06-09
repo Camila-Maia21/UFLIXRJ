@@ -1,4 +1,5 @@
 from app.criar_video.model import Video
+from app.criar_disciplina.model import CriarDisciplina
 from app.extensions import db
 from flask import request, render_template, redirect
 from flask.views import MethodView
@@ -27,7 +28,8 @@ class VideoCreate(MethodView): #/video/create
         db.session.add(video)
         db.session.commit()
 
-        return redirect ('/materia/<id>')
+        print(video.criardisciplina_id)
+        return redirect ('/materia/<int:id>')
         
 class VideoEdit(MethodView): #/video/edit/<int:id>
     def get(self,id):
