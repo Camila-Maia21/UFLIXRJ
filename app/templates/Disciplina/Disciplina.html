@@ -43,21 +43,20 @@
                 </a>
                 
             </div>
-            <a href="/materia/video"><div id ="video">
-               <div class ="materia-container">
-                <div class = "info-container">
-                    <h4 id ="infodd">Nome video</h4>
-                    <h5>Descrição:</h6> 
-                    <p id ="infod">Descrição vídeo</p> 
-                </div>
-               </div>
-                </a>
-                
-            </div>  
-                
-        
-    
-        </div>
+            {% if videos %}
+            {% for nome in videos %}
+            <div class="materia-container" id="video" ><a href = '/materia/{{video.id}}'></a>
+                <div class ="materia-container">
+                    <div class = "info-container">
+                        <h4 id ="infodd">{{video.nome}}</h4>
+                        <h5>Descrição:</h6> 
+                        <p id ="infod">{{video.descricao}}</p>
+                    </div>  
+            </div>
+            </div>
+            {% endfor %}
+            {% endif  %}            
+               
         </div>
 
     </body>

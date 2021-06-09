@@ -1,9 +1,10 @@
 from app.model import BaseModel
 from app.extensions import db
 from flask_login import UserMixin
+from app.association import association_table
 
 class Aluno(UserMixin, BaseModel): 
-    __tablename_ = 'aluno'
+    __tablename__ = "aluno"
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique = True)
@@ -12,7 +13,7 @@ class Aluno(UserMixin, BaseModel):
     curso = db.Column(db.String(50), nullable=False)
     senha_hash = db.Column(db.String(280), nullable=False)
 
-    criardisciplina = db.relationship("CriarDisciplina")
+    criardisciplina = db.relationship("CriarDisciplina", secondary=association_table, back_populates="aluno")
 
     #role 
     '''

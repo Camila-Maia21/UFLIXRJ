@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Criar Disciplina</title>
+        <title>Inscrição em Disciplina</title>
         <meta charset="UTF-8">
         <link href="{{ url_for ('static', filename='CriarDisciplina.css')}}" rel="stylesheet">
     </head>
@@ -23,24 +23,15 @@
         </div>   
 
         <div id = "main">      
-            <div><h1>Criar Disciplina</h1></div>
+            <div><h1>Inscrição em Disciplina</h1></div>
     
-            <form action="/criardisciplina" method="POST">
-            <div class= "text"> 
-                <label for="nome" id="profileName">Nome:</label><br>
-                <input class = "input" type="text" id="nome" name="nome"><br><br>
-            
-                <label for="periodo" id="profileName">Período:</label><br>
-                <input class = "input" type="text" id="periodo" name="periodo"><br><br>
-    
-                <label for="codigo_materia" id="profileName">Código da disciplina:</label><br>
-                <input class = "input" type="text" id="codigo_materia" name="codigo_materia"><br><br>
-    
+            <form action="/inscricaodisciplina" method="POST">
+            <div class= "text">    
                 <label for="codigo_turma" id="profileName">Código da turma:</label><br>
                 <input class = "input" type="text" id="codigo_turma" name="codigo_turma"><br><br>
             </div>
 
-                <input class = "button" type="submit" value="Criar">
+                <input class = "button" type="submit" value="Inscrever-se">
             </form>
         </div>
 

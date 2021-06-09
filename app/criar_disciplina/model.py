@@ -1,8 +1,9 @@
 from app.extensions import db
 from app.model import BaseModel
+from app.association import association_table
 
 class CriarDisciplina(BaseModel): 
-    __tablename_ = 'criardisciplina'
+    __tablename__ = "criardisciplina"
     id = db.Column(db.Integer, primary_key=True)
     materia = db.Column(db.String(50), nullable=False)
     periodo = db.Column(db.String(50), nullable=False)
@@ -10,7 +11,8 @@ class CriarDisciplina(BaseModel):
     codigo_turma = db.Column(db.String(5), nullable=False, unique = True)
 
     professor_id = db.Column(db.Integer, db.ForeignKey('professor.id'))
-    aluno_id = db.Column(db.Integer, db.ForeignKey('aluno.id'))
+    video = db.relationship("Video")
+    aluno = db.relationship("Aluno", secondary=association_table, back_populates="criardisciplina")
 
     def json(self): 
         return {

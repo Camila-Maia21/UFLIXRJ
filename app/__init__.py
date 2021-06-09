@@ -3,10 +3,11 @@ from app.extensions import db, jwt, migrate, login_manager
 from app.config import Config
 from flask_login import login_required
 from app.criar_disciplina.model import CriarDisciplina
+from app.criar_video.model import Video
 
 from app.cadastro_alunos.routes import aluno_api
 from app.cadastro_professores.routes import professor_api
-from app.criar_disciplina.routes import criar_disciplina
+from app.criar_disciplina.routes import criar_disciplina_api
 from app.login.controllers import login_api, main_api
 from app.minhas_disciplinas.routes import minhas_disciplinas_api
 from app.criar_video.routes import video_api
@@ -24,7 +25,7 @@ def create_app():
     
     app.register_blueprint(professor_api)
     app.register_blueprint(aluno_api)
-    app.register_blueprint(criar_disciplina)
+    app.register_blueprint(criar_disciplina_api)
     app.register_blueprint(login_api)
     app.register_blueprint(minhas_disciplinas_api)
     app.register_blueprint(main_api)
@@ -50,7 +51,9 @@ def create_app():
     def materia_especifica(id):
         id_materia = id
         materia = CriarDisciplina.query.filter_by(id = id_materia).first()
-        return render_template ("Disciplina/Disciplina.html", materia= materia)
+        videos = Video.query.filter_by(criardisciplina_id = id_materia).first()
+        print(videos)
+        return render_template ("Disciplina/Disciplina.html", materia= materia, videos = videos)
 
     @app.route('/materia/video')
     @login_required
