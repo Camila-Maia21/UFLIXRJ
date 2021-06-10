@@ -2,8 +2,6 @@ from app.criar_disciplina.model import CriarDisciplina
 from app.extensions import db
 from flask import request, render_template, redirect
 from flask.views import MethodView
-from app.cadastro_alunos.model import Aluno
-from app.cadastro_professores.model import Professor
 from flask_login import current_user, login_required
 
 class CriarDisciplinaDetails(MethodView): #/criardisciplina
@@ -23,7 +21,7 @@ class CriarDisciplinaDetails(MethodView): #/criardisciplina
 
         #professor_id=current_user.id
 
-        criardisciplina = CriarDisciplina(materia=materia, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma, professor_id=current_user.id)
+        criardisciplina = CriarDisciplina(materia=materia, periodo=periodo , codigo_materia=codigo_materia, codigo_turma=codigo_turma, user_id = current_user.id)
 
         db.session.add(criardisciplina)
         db.session.commit()
@@ -55,8 +53,7 @@ class CriarDisciplinaEdit(MethodView): #/criardisciplina/edit/<int:id>
         return criardisciplina.json() , 200
 
     def patch(self,id):
-        criardisciplina = CriarDisciplina.query.get_or_404(id)
-        dados = request.json 
+        criardisciplina = CriarDisciplina.query.get_or_404(id) 
 
         data = request.json    
 

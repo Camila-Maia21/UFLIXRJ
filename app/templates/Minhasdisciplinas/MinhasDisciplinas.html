@@ -11,7 +11,6 @@
             <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
             <div  id= "p">
                 <div id= "profile-box">
-                    <img src="../../static/imagens/profile-user (1) 1.png" alt="profile" id= "profile">
                     <p id = "profileName">{{current_user.nome}}</p>
                 </div>
 
@@ -35,11 +34,16 @@
            
            
             <div class ="materia-container" id = "ad">
+            {% if current_user.classe == 1 %}
                 <a href='/criardisciplina'>
-                <p id="profileName">Adicionar disciplina</p>  
+                    <p id="profileName">Adicionar disciplina</p>  
                 </a>
+            {% else %} 
+                <a href='/inscricaodisciplina '>
+                    <p id="profileName">Inscrição em disciplina</p>  
+                </a>
+            {% endif %}
             </div>
-            
             {%for materia in materias %}
             <div class="materia-container" id="ad" ><a href = '/materia/{{materia.id}}'><p class="profileName">   {{materia.materia}}   </p></a></div>
             {% endfor %}

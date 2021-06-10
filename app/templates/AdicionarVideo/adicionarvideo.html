@@ -11,7 +11,6 @@
             <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
             <div  id= "p">
                 <div id= "profile-box">
-                    <img src="../../static/imagens/profile-user (1) 1.png" alt="profile" id= "profile">
                     <p id = "profileName">{{current_user.nome}}</p>
                 </div>
 
@@ -25,7 +24,7 @@
         <div id = "main">      
             <div><h1>Adicionar Vídeo</h1></div>
     
-            <form action="/video/create" method="POST">
+            <form action="/video/create/{{materia}}" method="POST">
             <div class= "text"> 
                 <label for="nome" id="profileName">Nome:</label><br>
                 <input class = "input" type="text" id="nome" name="nome"><br><br>

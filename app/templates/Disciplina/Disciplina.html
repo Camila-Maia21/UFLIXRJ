@@ -11,7 +11,6 @@
             <img src="../../static/imagens/logo.png" alt="Minerva" class= "m-image">
             <div  id= "p">
                 <div id= "profile-box">
-                    <img src="../../static/imagens/profile-user (1) 1.png" alt="profile" id= "profile">
                     <p id = "profileName">{{current_user.nome}}</p>
                 </div>
 
@@ -38,14 +37,14 @@
            
             <div class ="materia-container" id = "ad">
                 <img src="../../static/imagens/plus (2) 1 (1).png" alt="leave" id= "plus">
-                <a href='/video/create'>
+                <a href='/video/create/{{materia.id}}'>
                     <p id="profileName">Adicionar Vídeo</p>
                 </a>
                 
             </div>
-            {% if videos %}
+        
             {% for video in videos %}
-            <div class="materia-container" id="video" ><a href = '/materia/{{video.id}}'></a>
+            <div class="materia-container" id="video" ><a href = '/video/{{video.id}}'><p class="profileName">   {{video.nome}}   </p></a>
                 <div class ="materia-container">
                     <div class = "info-container">
                         <h4 id ="infodd">{{video.nome}}</h4>
@@ -55,7 +54,7 @@
             </div>
             </div>
             {% endfor %}
-            {% endif  %}            
+                 
                
         </div>
 

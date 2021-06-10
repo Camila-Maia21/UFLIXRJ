@@ -2,8 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_user, logout_user, login_required
 import bcrypt 
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.cadastro_professores.model import Professor
-from app.cadastro_alunos.model import Aluno
+from app.cadastro.model import User
 from app.extensions import db
 
 login_api = Blueprint('login_api', __name__)
@@ -24,13 +23,9 @@ def login_post():
     cpf = request.form.get('cpf')
     senha = request.form.get('senha')
 
-    aluno = Aluno.query.filter_by(cpf=cpf).first()
-    professor = Professor.query.filter_by(cpf=cpf).first()
-    if professor and bcrypt.checkpw(senha.encode(), professor.senha_hash):
-        user = professor
-        login_user(user)
-    elif aluno and bcrypt.checkpw(senha.encode(), aluno.senha_hash):
-        user = aluno
+    user = User.query.filter_by(cpf=cpf).first()
+
+    if user and bcrypt.checkpw(senha.encode(), user.senha_hash):
         login_user(user)
     else:
             flash('Please check your login details and try again.')

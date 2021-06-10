@@ -1,6 +1,6 @@
 from app.extensions import db
 from app.model import BaseModel
-from app.association import association_table
+#from app.association import association_table
 
 class CriarDisciplina(BaseModel): 
     __tablename__ = "criardisciplina"
@@ -10,9 +10,9 @@ class CriarDisciplina(BaseModel):
     codigo_materia = db.Column(db.String(5), nullable=False)
     codigo_turma = db.Column(db.String(5), nullable=False, unique = True)
 
-    professor_id = db.Column(db.Integer, db.ForeignKey('professor.id'))
-    video = db.relationship("Video")
-    aluno = db.relationship("Aluno", secondary=association_table, back_populates="criardisciplina")
+    video = db.relationship("Video") 
+    #user = db.relationship("User", secondary=association_table, back_populates="criardisciplina") 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def json(self): 
         return {

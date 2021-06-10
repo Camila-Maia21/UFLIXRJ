@@ -1,20 +1,23 @@
 from app.model import BaseModel
 from app.extensions import db
 from flask_login import UserMixin
-from app.association import association_table
+#from app.association import association_table
 
-class Aluno(UserMixin, BaseModel): 
-    __tablename__ = "aluno"
+class User(UserMixin, BaseModel): 
+    __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique = True)
     cpf = db.Column(db.String(50), nullable=False, unique = True)
-    dre = db.Column(db.String(50), nullable=False, unique = True)
-    curso = db.Column(db.String(50), nullable=False)
+    dre = db.Column(db.String(50), unique = True)
+    siape = db.Column(db.String(50), unique = True)
+    curso = db.Column(db.String(50))
     senha_hash = db.Column(db.String(280), nullable=False)
+    classe = db.Column(db.Boolean())
 
-    criardisciplina = db.relationship("CriarDisciplina", secondary=association_table, back_populates="aluno")
-
+    #criardisciplina = db.relationship("CriarDisciplina", secondary=association_table, back_populates="user")  
+    
+    criardisciplina = db.relationship("CriarDisciplina")
     #role 
     '''
     {% if current_user.role is_authenticated %}
@@ -27,6 +30,7 @@ class Aluno(UserMixin, BaseModel):
             "nome": self.nome,
             "email": self.email,
             "cpf": self.cpf,
-            "dre": self.dre, 
+            "dre": self.dre,
+            "siape": self.siape, 
             "curso": self.curso
         }

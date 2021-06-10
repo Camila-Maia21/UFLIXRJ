@@ -1,12 +1,9 @@
 from flask import Blueprint
-from app.cadastro_materia.controllers import (MateriaCurrent, MateriaDetails)
+from app.inscricao_materia.controllers import (InscricaoDisciplina)
 
-cadastro_materia_api = Blueprint('materia_api', __name__)
+inscricao_materia_api = Blueprint('inscricao_materia_api', __name__)
 
-cadastro_materia_api.add_url_rule(
-    '/materia/current', view_func = MateriaCurrent.as_view('materia_current'), methods = ['GET']
+inscricao_materia_api.add_url_rule(
+    '/inscricaodisciplina', view_func = InscricaoDisciplina.as_view('inscricaodisciplina_details'), methods = ['GET', 'POST']
 )
 #view_func -> responde as solicitações de seu aplicativo (requisições)
-cadastro_materia_api.add_url_rule(
-    '/materia/cadastro', view_func = MateriaDetails.as_view('materia_cadastro'), methods = ['POST']
-)
