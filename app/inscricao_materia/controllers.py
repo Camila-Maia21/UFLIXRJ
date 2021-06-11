@@ -18,7 +18,11 @@ class InscricaoDisciplina(MethodView): #/inscricaodisciplina/<codigo_turma>
         materia = CriarDisciplina.query.filter_by(codigo_turma=codigo_turma_forms).first()
         if materia:
             user = current_user
-            relacionamento = Relacionamento(user=user, criardisciplina = [materia])
+            relacionamento = Relacionamento.query.filter_by(user=user).first()
+            if relacionamento:
+                relacionamento.criardisciplina.extend([materia])
+            else:
+                relacionamento = Relacionamento(user=user, criardisciplina = [materia])
 
             db.session.add(relacionamento)
             db.session.commit()
