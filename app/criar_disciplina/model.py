@@ -1,6 +1,6 @@
 from app.extensions import db
 from app.model import BaseModel
-#from app.association import association_table
+from app.relacionamentos.model import association_disc_rel
 
 class CriarDisciplina(BaseModel): 
     __tablename__ = "criardisciplina"
@@ -11,7 +11,7 @@ class CriarDisciplina(BaseModel):
     codigo_turma = db.Column(db.String(5), nullable=False, unique = True)
 
     video = db.relationship("Video") 
-    #user = db.relationship("User", secondary=association_table, back_populates="criardisciplina") 
+    relacionamento = db.relationship("Relacionamento", secondary=association_disc_rel, back_populates="criardisciplina")
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def json(self): 

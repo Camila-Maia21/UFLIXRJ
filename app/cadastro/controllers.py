@@ -22,8 +22,7 @@ class AlunoCreate(MethodView): #/cadastroaluno
         cpf = data['cpf']
         dre = data['dre']
         curso = data['curso']
-        senha = str(data['senha'])
-        
+        senha = str(data['senha'])    
 
         if not isinstance(nome, str) or not isinstance(email, str) or not isinstance(cpf, str) or not isinstance(dre, str) or not isinstance(curso, str):
             return {"error" : "Algum tipo invalido"}, 400
@@ -36,8 +35,6 @@ class AlunoCreate(MethodView): #/cadastroaluno
         db.session.commit()
 
         return redirect ('/login')
-
-
 
 class ProfessorCreate(MethodView): #/cadatroprofessor
     def get(self):

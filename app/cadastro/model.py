@@ -1,7 +1,7 @@
 from app.model import BaseModel
 from app.extensions import db
 from flask_login import UserMixin
-#from app.association import association_table
+from app.relacionamentos.model import association_user_rel
 
 class User(UserMixin, BaseModel): 
     __tablename__ = "user"
@@ -13,11 +13,10 @@ class User(UserMixin, BaseModel):
     siape = db.Column(db.String(50), unique = True)
     curso = db.Column(db.String(50))
     senha_hash = db.Column(db.String(280), nullable=False)
-    classe = db.Column(db.Boolean())
-
-    #criardisciplina = db.relationship("CriarDisciplina", secondary=association_table, back_populates="user")  
+    classe = db.Column(db.Boolean())  
     
     criardisciplina = db.relationship("CriarDisciplina")
+    relacionamento = db.relationship("Relacionamento", secondary=association_user_rel, back_populates="user")
     #role 
     '''
     {% if current_user.role is_authenticated %}

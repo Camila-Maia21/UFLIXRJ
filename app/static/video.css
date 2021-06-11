@@ -66,6 +66,18 @@ body{
        
    }
 
+   .input {
+    background-color: rgb(33, 33, 33) ;
+    outline: 0;
+    border-width: 1px;
+    color: #c4c4c4;
+    border-radius: 8px;
+    width: 45%;
+    height: 25px; 
+    padding-left: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    }
    
    #header2 {
        display: flex;
@@ -93,6 +105,20 @@ body{
        font-weight: bold; 
    
    }
+
+   #button:hover {
+    background-color: rgb(255, 149, 149);
+      
+    }
+
+    #materias {
+  
+        width: 98%;
+        height: 22%;
+        display: flex;
+        margin-left: 1.15%;
+        margin-bottom: 3%;
+    }
    
    .materia-container {
        width: 100%;
