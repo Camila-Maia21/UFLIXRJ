@@ -1,7 +1,6 @@
 from app.model import BaseModel
 from app.extensions import db
 from flask_login import UserMixin
-from app.relacionamentos.model import association_user_rel
 
 class User(UserMixin, BaseModel): 
     __tablename__ = "user"
@@ -16,7 +15,8 @@ class User(UserMixin, BaseModel):
     classe = db.Column(db.Boolean())  
     
     criardisciplina = db.relationship("CriarDisciplina")
-    relacionamento = db.relationship("Relacionamento", secondary=association_user_rel, back_populates="user")
+    relacionamento_id = db.Column(db.Integer, db.ForeignKey('relacionamento.id'))
+    relacionamento = db.relationship("Relacionamento", back_populates="user")
     #role 
     '''
     {% if current_user.role is_authenticated %}

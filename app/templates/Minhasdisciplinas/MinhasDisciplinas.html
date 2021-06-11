@@ -39,14 +39,20 @@
                     <p id="profileName">Adicionar disciplina</p>  
                 </a>
             {% else %} 
-                <a href='/inscricaodisciplina '>
+                <a href='/inscricaodisciplina'>
                     <p id="profileName">Inscrição em disciplina</p>  
                 </a>
             {% endif %}
             </div>
+            {% if current_user.classe == 1 %}
             {%for materia in materias %}
             <div class="materia-container" id="ad" ><a href = '/materia/{{materia.id}}'><p class="profileName">   {{materia.materia}}   </p></a></div>
             {% endfor %}
+            {% else %}
+            {%for materia in inscricoes.criardisciplina %}
+            <div class="materia-container" id="ad" ><a href = '/materia/{{materia.id}}'><p class="profileName">   {{materia.materia}}   </p></a></div>
+            {% endfor %}
+            {% endif %}
         </div>
         
         </div>

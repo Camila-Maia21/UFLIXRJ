@@ -1,6 +1,6 @@
 from app.extensions import db
 from app.model import BaseModel
-from app.relacionamentos.model import association_disc_rel
+from app.inscricao_materia.model import association_disc_rel
 
 class CriarDisciplina(BaseModel): 
     __tablename__ = "criardisciplina"

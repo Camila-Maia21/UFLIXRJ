@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 1530f80e72a0
+Revision ID: 000814f3dfaf
 Revises: 
-Create Date: 2021-06-11 10:27:06.453055
+Create Date: 2021-06-11 17:36:57.946088
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1530f80e72a0'
+revision = '000814f3dfaf'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,17 +32,13 @@ def upgrade():
     sa.Column('curso', sa.String(length=50), nullable=True),
     sa.Column('senha_hash', sa.String(length=280), nullable=False),
     sa.Column('classe', sa.Boolean(), nullable=True),
+    sa.Column('relacionamento_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['relacionamento_id'], ['relacionamento.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('cpf'),
     sa.UniqueConstraint('dre'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('siape')
-    )
-    op.create_table('association_user_rel',
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('relacionamento_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['relacionamento_id'], ['relacionamento.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], )
     )
     op.create_table('criardisciplina',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -78,7 +74,6 @@ def downgrade():
     op.drop_table('video')
     op.drop_table('association_disc_rel')
     op.drop_table('criardisciplina')
-    op.drop_table('association_user_rel')
     op.drop_table('user')
     op.drop_table('relacionamento')
     # ### end Alembic commands ###
