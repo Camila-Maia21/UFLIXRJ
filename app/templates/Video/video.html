@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Aula 1</title>
+        <title>{{videos.nome}}</title>
         <meta charset="UTF-8">
         <link href="{{ url_for ('static', filename='video.css')}}" rel="stylesheet">
     </head>
@@ -25,7 +25,8 @@
         <div id = "main">
         <div id= "header2">
             <img src="../../static/imagens/Group (1).png" alt="Minerva" class= "arrow-image">
-           <h1>Aula 1 - Introdução</h1>
+           <h1>{{videos.nome}}</h1>
+           <h2>{{videos.descricao}}</h2>
         
         </div>
    
@@ -33,7 +34,7 @@
 
             <div class ="materia-container">
 
-                <iframe width="675,5" height="380" src="https://www.youtube.com/embed/b_8fISXUBF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="675,5" height="380" src={{videos.link}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
    
 

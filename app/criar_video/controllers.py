@@ -3,13 +3,13 @@ from app.criar_disciplina.model import CriarDisciplina
 from app.extensions import db
 from flask import request, render_template, redirect
 from flask.views import MethodView
-'''
+
 class VideoDetails(MethodView): #/video/<int:id>
     def get(self, id):
         id_video = id
         videos = Video.query.filter_by(id = id_video).first()
         return render_template("video/video.html", videos = videos)
-'''
+
 
 class VideoCreate(MethodView): #/video/create/<int:materia_id>
     def get(self, materia_id):
