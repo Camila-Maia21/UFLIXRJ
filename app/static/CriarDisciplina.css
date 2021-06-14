@@ -143,13 +143,14 @@ h1 {
     height: 20%;  
     margin-top: 15%;
 }
-.arrow-image {
-height: 4%;
-width: 4%;
-margin-top: 5%;
-margin-left: -90%;
-
+.arrow-image{
+    height: 20px;
+    width: 20px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: -55px;
 }
+
 
 .text {
     margin-left: 100px;

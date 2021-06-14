@@ -26,8 +26,8 @@ class VideoCreate(MethodView): #/video/create/<int:materia_id>
         if not isinstance(nome, str) or not isinstance(descricao, str):
             return {"error" : "Algum tipo invalido"}, 400
         
-
-        video = Video(nome=nome, descricao=descricao , link=link, criardisciplina_id=materia)
+        linkcerto = link.replace("watch?v=", "embed/")
+        video = Video(nome=nome, descricao=descricao , link=linkcerto, criardisciplina_id=materia)
 
         db.session.add(video)
         db.session.commit()

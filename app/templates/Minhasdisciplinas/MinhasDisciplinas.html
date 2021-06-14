@@ -33,24 +33,28 @@
         <div id = "materias">
            
            
-            <div class ="materia-container" id = "ad">
+           
             {% if current_user.classe == 1 %}
                 <a href='/criardisciplina'>
-                    <p id="profileName">Adicionar disciplina</p>  
+                <div class ="materia-container" id = "ad">
+                    <p id="profileName">Criar disciplina</p>  
+                </div>
                 </a>
             {% else %} 
                 <a href='/inscricaodisciplina'>
-                    <p id="profileName">Inscrição em disciplina</p>  
+                    <div class ="materia-container" id = "ad">
+                        <p id="profileName">Inscrição disciplina</p>  
+                    </div>
                 </a>
             {% endif %}
-            </div>
+            
             {% if current_user.classe == 1 %}
             {%for materia in materias %}
-            <div class="materia-container" id="ad" ><a href = '/materia/{{materia.id}}'><p class="profileName">   {{materia.materia}}   </p></a></div>
+            <a href = '/materia/{{materia.id}}'><div class="materia-container" id="ad" ><p class="profileName">   {{materia.materia}}   </p></div></a>
             {% endfor %}
             {% else %}
             {%for materia in inscricoes.criardisciplina %}
-            <div class="materia-container" id="ad" ><a href = '/materia/{{materia.id}}'><p class="profileName">   {{materia.materia}}   </p></a></div>
+            <a href = '/materia/{{materia.id}}'><div class="materia-container" id="ad" ><p class="profileName">   {{materia.materia}}   </p></div></a>
             {% endfor %}
             {% endif %}
         </div>

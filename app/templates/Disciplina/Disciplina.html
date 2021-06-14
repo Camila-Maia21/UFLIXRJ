@@ -22,40 +22,42 @@
         </div>  
 
         <div id = "main">
-        <div id= "header2">
-            <h1>{{materia.materia}}</h1>
-           <div id = "search">
-                <p id = "profileName">Pesquisar:</p>
-                <input type="text" class="input">
-                <input type = "submit" id = "button" value="Buscar">
-            </div> 
-     
-        </div>
-           <div id = "info"><p>Código da disciplina: {{materia.codigo_materia}} | Período: {{materia.periodo}}</p></div>
-        <div id = "videos">
-           
-           
-            <div class ="materia-container" id = "ad">
-                <img src="../../static/imagens/plus (2) 1 (1).png" alt="leave" id= "plus">
-                <a href='/video/create/{{materia.id}}'>
-                    <p id="profileName">Adicionar Vídeo</p>
+            <div>
+                <a href="/materia"> 
+                <img src="../../static/imagens/Group (1).png" alt="Minerva" class= "arrow-image">
                 </a>
-                
             </div>
-        
-            {% for video in videos %}
-            <div class="materia-container" id="video" ><a href = '/video/{{video.id}}'><p class="profileName">   {{video.nome}}   </p></a>
-                <div class ="materia-container">
-                    <div class = "info-container">
-                        <h4 id ="infodd">{{video.nome}}</h4>
-                        <h5>Descrição:</h6> 
-                        <p id ="infod">{{video.descricao}}</p>
-                    </div>  
+            <div id= "header2">
+                <h1>{{materia.materia}}</h1> 
             </div>
-            </div>
-            {% endfor %}
-                 
-               
+            <div id = "info"><p>Código da disciplina: {{materia.codigo_materia}} | Período: {{materia.periodo}}</p></div>
+            <div id = "videos">
+            
+                {% if current_user.classe == 1 %}   
+                   
+                        <a href='/video/create/{{materia.id}}'>
+                            <div class ="materia-container" id = "ad">
+                            <img src="../../static/imagens/plus (2) 1 (1).png" alt="leave" id= "plus">
+                            <p id="profileName">Adicionar Vídeo</p>
+                        </div>
+                        </a>    
+                    
+                {% endif %} 
+       
+                {% for video in videos %}
+                    
+                    <a href = '/video/{{video.id}}' class="materia-container1">
+
+                        <div class = "info-container1">
+                            <h4 id ="infodd">{{video.nome}}</h4>
+                            <p id ="infoddd">Descrição:</p> 
+                            <p id ="infod">{{video.descricao}}</p>
+                        </div> 
+                    </a>
+            
+                {% endfor %}
+                    
+            </div>     
         </div>
 
     </body>
